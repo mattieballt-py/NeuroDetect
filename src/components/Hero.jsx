@@ -27,13 +27,13 @@ export default function Hero() {
 
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 55, damping: 22 })
 
-  const img1Opacity = useTransform(smoothProgress, [0, 0.38], [1, 0])
-  const img2Opacity = useTransform(smoothProgress, [0.15, 0.52], [0, 1])
-  const img2Scale   = useTransform(smoothProgress, [0.15, 0.55], [1.03, 1])
-  const hintOpacity = useTransform(smoothProgress, [0, 0.06, 0.45, 0.55], [0, 1, 1, 0])
+  const img1Opacity = useTransform(smoothProgress, [0, 0.22], [1, 0])
+  const img2Opacity = useTransform(smoothProgress, [0.10, 0.30], [0, 1])
+  const img2Scale   = useTransform(smoothProgress, [0.10, 0.30], [1.03, 1])
+  const hintOpacity = useTransform(smoothProgress, [0, 0.03, 0.25, 0.33], [0, 1, 1, 0])
 
   return (
-    <div ref={containerRef} style={{ height: '220vh' }}>
+    <div ref={containerRef} style={{ height: '300vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-bg flex flex-col md:flex-row">
 
         {/* ── LEFT: sticky text column ────────────────────────────── */}
@@ -91,7 +91,7 @@ export default function Hero() {
             <motion.p
               variants={fadeIn}
               custom={0.72}
-              className="font-sans text-text-muted text-base lg:text-lg max-w-sm mb-8 leading-relaxed"
+              className="hidden md:block font-sans text-text-muted text-base lg:text-lg max-w-sm mb-8 leading-relaxed"
             >
               NeuroDetect uses explainable AI to flag high-risk brain MRI scans — showing radiologists exactly where to look.
             </motion.p>
@@ -102,7 +102,7 @@ export default function Hero() {
               href="#stakes"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="font-sans inline-flex items-center gap-2 px-7 py-3.5 bg-cta text-white font-semibold rounded-full text-base glow-cta hover:glow-cta-hover hover:bg-cta-hover transition-all duration-200 w-fit"
+              className="hidden md:inline-flex font-sans items-center gap-2 px-7 py-3.5 bg-cta text-white font-semibold rounded-full text-base glow-cta hover:glow-cta-hover hover:bg-cta-hover transition-all duration-200 w-fit"
             >
               See How It Works
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="mt-0.5">
@@ -113,7 +113,7 @@ export default function Hero() {
         </div>
 
         {/* ── RIGHT: full-height image panel ──────────────────────── */}
-        <div className="relative flex-1 h-full min-h-0">
+        <div className="relative flex-1 min-h-0">
 
           <div
             className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"

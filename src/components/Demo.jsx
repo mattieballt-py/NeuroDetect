@@ -12,7 +12,7 @@ const fadeUp = {
 
 const SAMPLE_RESULTS = [
   {
-    label: 'Sample A — Glioblastoma',
+    label: 'Sample A — Glioma',
     verdict: 'Tumour Detected',
     confidence: 94,
     region: 'Right temporal lobe',
@@ -26,7 +26,7 @@ const SAMPLE_RESULTS = [
     isPositive: true,
   },
   {
-    label: 'Sample C — Normal',
+    label: 'Sample C — No Tumour',
     verdict: 'No Abnormality',
     confidence: 97,
     region: 'No region of concern',
@@ -352,7 +352,7 @@ export default function Demo() {
         >
           <p className="text-text-muted text-sm mb-4">Want to connect your own backend?</p>
           <motion.a
-            href="mailto:neurodetect@imperial.ac.uk"
+            href="#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(232,242,246,0.15)] rounded-full text-sm font-medium text-theme hover:border-[rgba(232,242,246,0.3)] hover:bg-surface/20 transition-all duration-200"
