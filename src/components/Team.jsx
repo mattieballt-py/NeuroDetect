@@ -145,9 +145,8 @@ export default function Team() {
             viewport={{ once: true, margin: '-60px' }}
             className="flex justify-center mb-10"
           >
-            <div className="rounded-xl border border-[rgba(232,242,246,0.1)] bg-surface/20 px-8 py-4 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-md bg-[rgba(0,53,128,0.4)] border border-[rgba(0,53,128,0.5)] flex items-center justify-center text-[#6699ff] font-black text-xs">IC</div>
-              <span className="text-sm font-semibold text-theme">Imperial College London</span>
+            <div className="rounded-xl border border-[rgba(232,242,246,0.1)] bg-surface/20 px-8 py-5 flex items-center justify-center">
+              <img src="/imperial.svg" alt="Imperial College London" className="h-8 w-auto opacity-85" />
             </div>
           </motion.div>
 

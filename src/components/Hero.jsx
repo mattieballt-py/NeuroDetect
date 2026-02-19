@@ -148,6 +148,11 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* ── Imperial College logo — bottom-right ──── */}
+        <div className="absolute bottom-7 right-8 z-20 pointer-events-none flex items-center gap-2 opacity-50">
+          <img src="/imperial.svg" alt="Imperial College London" className="h-5 w-auto" />
+        </div>
+
         {/* ── Scroll hint — centred at bottom ───────── */}
         <motion.div
           style={{ opacity: hintOpacity }}

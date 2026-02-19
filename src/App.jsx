@@ -6,6 +6,8 @@ import HowItWorks from './components/HowItWorks'
 import Impact from './components/Impact'
 import Demo from './components/Demo'
 import Team from './components/Team'
+import FAQ from './components/FAQ'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
@@ -20,6 +22,8 @@ export default function App() {
         <Impact />
         <Demo />
         <Team />
+        <FAQ />
+        <Contact />
       </main>
       <Footer />
     </div>

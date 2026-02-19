@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Solution', href: '#solution' },
   { label: 'Impact', href: '#impact' },
   { label: 'Team', href: '#team' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
@@ -97,7 +98,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <motion.a
-              href="#demo"
+              href="#contact"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="font-sans px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300"
@@ -109,7 +110,7 @@ export default function Navbar() {
                   : '0 2px 8px rgba(0,0,0,0.15)',
               }}
             >
-              Try Demo →
+              Request Beta →
             </motion.a>
           </div>
 
@@ -159,7 +160,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#demo"
+                href="#contact"
                 onClick={() => setMobileOpen(false)}
                 className="font-sans mt-2 px-5 py-3 text-sm font-semibold rounded-full text-center transition-colors duration-300"
                 style={{
@@ -167,7 +168,7 @@ export default function Navbar() {
                   color: pastHero ? '#ffffff' : '#0D0D0D',
                 }}
               >
-                Try Demo →
+                Request Beta →
               </a>
             </div>
           </motion.div>

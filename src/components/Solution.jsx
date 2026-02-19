@@ -245,40 +245,43 @@ export default function Solution() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="glass-card gradient-border rounded-2xl p-7 flex flex-col gap-5"
+              className="glass-card gradient-border rounded-2xl p-7 flex flex-col justify-between"
             >
-              {/* Step number + badge */}
-              <div className="flex items-center justify-between">
-                <span className="text-4xl font-black text-surface/80 leading-none select-none">{step.number}</span>
-                <span className={`text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full ${step.badgeColor}`}>
-                  {step.badge}
-                </span>
-              </div>
-
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-surface/50 flex items-center justify-center text-theme">
-                {step.icon}
-              </div>
-
-              {/* Text */}
-              <div>
-                <h3 className="text-xl font-bold text-theme mb-0.5">{step.title}</h3>
-                <div className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">{step.subtitle}</div>
-                <p className="text-sm text-text-muted leading-relaxed">{step.body}</p>
-              </div>
-
-              {/* Callout (step 2 only) */}
-              {step.callout && (
-                <div className="rounded-xl border border-cta/20 bg-[rgba(231,30,34,0.06)] px-4 py-3 text-xs font-medium text-theme leading-relaxed flex items-start gap-2">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 mt-0.5 text-cta" aria-hidden>
-                    <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  {step.callout}
+              {/* Top content group */}
+              <div className="flex flex-col gap-5">
+                {/* Step number + badge */}
+                <div className="flex items-center justify-between">
+                  <span className="text-4xl font-black text-surface/80 leading-none select-none">{step.number}</span>
+                  <span className={`text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full ${step.badgeColor}`}>
+                    {step.badge}
+                  </span>
                 </div>
-              )}
 
-              {/* Visual mockup */}
-              {step.visual}
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl bg-surface/50 flex items-center justify-center text-theme">
+                  {step.icon}
+                </div>
+
+                {/* Text */}
+                <div>
+                  <h3 className="text-xl font-bold text-theme mb-0.5">{step.title}</h3>
+                  <div className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">{step.subtitle}</div>
+                  <p className="text-sm text-text-muted leading-relaxed">{step.body}</p>
+                </div>
+
+                {/* Callout (step 2 only) */}
+                {step.callout && (
+                  <div className="rounded-xl border border-cta/20 bg-[rgba(231,30,34,0.06)] px-4 py-3 text-xs font-medium text-theme leading-relaxed flex items-start gap-2">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 mt-0.5 text-cta" aria-hidden>
+                      <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {step.callout}
+                  </div>
+                )}
+              </div>
+
+              {/* Visual mockup — pushed to bottom */}
+              <div className="mt-5">{step.visual}</div>
             </motion.div>
           ))}
         </div>
