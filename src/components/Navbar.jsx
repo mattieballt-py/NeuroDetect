@@ -45,7 +45,7 @@ export default function Navbar() {
         transition: 'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease',
       }}
     >
-      <div className="max-w-content mx-auto px-6 lg:px-8">
+      <div className="px-6 md:px-8 lg:px-14 xl:px-20">
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}

@@ -140,7 +140,7 @@ export default function Hero() {
             <img src="/mri-plain.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
             <motion.div
               style={{ opacity: img2Opacity }}
-              className="absolute top-6 right-6 z-20 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"
+              className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"
             >
               <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
               <span className="text-xs font-semibold text-text-primary font-sans">AI Analysis Active</span>
