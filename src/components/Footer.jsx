@@ -62,18 +62,7 @@ export default function Footer() {
               Explainable AI for brain tumour detection. Built by engineers, designed for clinicians.
             </p>
 
-            <div className="flex flex-col gap-2.5">
-              <a
-                href="mailto:mb1223@ic.ac.uk"
-                className="inline-flex items-center gap-2 text-xs text-text-muted hover:text-theme transition-colors duration-150"
-              >
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="opacity-60">
-                  <rect x="1" y="3" width="11" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
-                  <path d="M1 4.5l5.5 3.5 5.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-                </svg>
-                mb1223@ic.ac.uk
-              </a>
-            </div>
+            
 
             <motion.a
               href="#contact"
