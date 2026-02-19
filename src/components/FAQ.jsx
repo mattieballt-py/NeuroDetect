@@ -39,10 +39,7 @@ const faqs = [
     q: 'When will NeuroDetect be available to clinical partners?',
     a: 'We are currently in closed beta, working with a small number of clinical partners to validate the system in real-world settings. If you are interested in participating, please use the contact form above. A broader rollout is planned following successful validation.',
   },
-  {
-    q: 'Who built NeuroDetect?',
-    a: 'NeuroDetect was developed by a multidisciplinary team of Mechanical Engineering students at Imperial College London as part of the ME4 Design Project. The team combines expertise in machine learning, medical imaging, data science, and systems engineering.',
-  },
+  
 ]
 
 function FAQItem({ item, index, isOpen, onToggle }) {
