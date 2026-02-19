@@ -19,22 +19,15 @@ const cards = [
     expanded:
       'The AI highlights the exact regions of the scan that led to its decision — like a doctor circling areas of concern on an X-ray. Brighter regions indicate stronger influence on the result.',
     visual: (
-      <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] grid grid-cols-2 gap-1 bg-[#111]">
-        <div className="aspect-square relative flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1a2a30, #0d1a20)' }}>
-          <svg width="60" height="70" viewBox="0 0 60 70" fill="none" className="opacity-60">
-            <ellipse cx="30" cy="35" rx="25" ry="30" stroke="rgba(232,242,246,0.3)" strokeWidth="1.5" />
-            <ellipse cx="30" cy="35" rx="15" ry="20" stroke="rgba(232,242,246,0.2)" strokeWidth="1" />
-            <circle cx="30" cy="35" r="5" fill="rgba(232,242,246,0.1)" />
-          </svg>
-          <span className="absolute bottom-2 left-2 text-[9px] text-text-muted opacity-50">Original</span>
-        </div>
-        <div className="aspect-square relative flex items-center justify-center" style={{ background: 'radial-gradient(ellipse at 60% 40%, rgba(231,30,34,0.5) 0%, rgba(255,120,30,0.25) 30%, rgba(30,100,150,0.1) 60%, #0d1a20 100%)' }}>
-          <svg width="60" height="70" viewBox="0 0 60 70" fill="none" className="opacity-60">
-            <ellipse cx="30" cy="35" rx="25" ry="30" stroke="rgba(232,242,246,0.2)" strokeWidth="1.5" />
-            <circle cx="36" cy="28" r="10" fill="rgba(231,30,34,0.3)" stroke="rgba(231,30,34,0.5)" strokeWidth="1" />
-            <circle cx="36" cy="28" r="5" fill="rgba(231,30,34,0.5)" />
-          </svg>
-          <span className="absolute bottom-2 left-2 text-[9px] text-cta opacity-70">AI heatmap</span>
+      <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#111]">
+        <img
+          src="/brains.gif"
+          alt="Animated Grad-CAM heatmap visualisation across brain scans"
+          className="w-full h-auto object-contain"
+        />
+        <div className="px-3 py-2 border-t border-[rgba(232,242,246,0.06)] flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse shrink-0" />
+          <span className="text-[10px] font-sans text-text-muted opacity-70">Live Grad-CAM visualisation — areas the AI weighted most heavily</span>
         </div>
       </div>
     ),

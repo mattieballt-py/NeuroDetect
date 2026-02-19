@@ -27,20 +27,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
           {/* Brand column */}
           <div>
-            <a href="#" className="flex items-center gap-2.5 mb-4">
-              <img
-                src="/logo.svg"
-                alt="NeuroDetect"
-                className="h-7 w-auto"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                  e.target.nextSibling.style.display = 'flex'
-                }}
-              />
-              <span className="hidden items-center gap-2 text-theme font-bold text-lg">
-                <span className="w-5 h-5 rounded bg-cta flex items-center justify-center text-white text-[10px] font-black">N</span>
-                NeuroDetect
-              </span>
+            <a href="#" className="inline-flex mb-5">
+              <div className="bg-nav rounded-lg px-3 py-2">
+                <img
+                  src="/Logo.svg"
+                  alt="NeuroDetect"
+                  className="h-6 w-auto"
+                />
+              </div>
             </a>
             <p className="text-sm text-text-muted leading-relaxed max-w-[260px]">
               Explainable AI for brain tumour detection. Built by engineers, designed for clinicians.

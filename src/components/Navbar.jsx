@@ -34,27 +34,13 @@ export default function Navbar() {
     >
       <div className="max-w-content mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 shrink-0">
+          {/* Logo — Logo.svg has dark text, designed for the light nav */}
+          <a href="#" className="flex items-center shrink-0">
             <img
-              src="/logo.svg"
+              src="/Logo.svg"
               alt="NeuroDetect"
               className="h-8 w-auto"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.nextSibling.style.display = 'flex'
-              }}
             />
-            {/* Fallback wordmark shown until logo.svg is added */}
-            <span
-              className="text-[#0D0D0D] font-bold text-xl tracking-tight hidden"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
-              <span className="w-6 h-6 rounded-md bg-cta flex items-center justify-center">
-                <span className="text-white text-xs font-black">N</span>
-              </span>
-              NeuroDetect
-            </span>
           </a>
 
           {/* Desktop nav links */}
@@ -63,7 +49,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-[#1a2a30] hover:text-[#0D0D0D] rounded-lg hover:bg-black/5 transition-all duration-200"
+                className="font-sans px-4 py-2 text-sm font-medium text-[#1a2a30] hover:text-[#0D0D0D] rounded-lg hover:bg-black/5 transition-all duration-200"
               >
                 {link.label}
               </a>
@@ -76,7 +62,7 @@ export default function Navbar() {
               href="#demo"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="px-5 py-2.5 bg-cta text-white text-sm font-semibold rounded-full transition-all duration-200 hover:bg-cta-hover glow-cta hover:glow-cta-hover"
+              className="font-sans px-5 py-2.5 bg-cta text-white text-sm font-semibold rounded-full transition-all duration-200 hover:bg-cta-hover glow-cta hover:glow-cta-hover"
             >
               Try Demo →
             </motion.a>
@@ -109,7 +95,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2.5 text-sm font-medium text-[#1a2a30] hover:text-[#0D0D0D] rounded-lg hover:bg-black/5 transition-all"
+                  className="font-sans px-3 py-2.5 text-sm font-medium text-[#1a2a30] hover:text-[#0D0D0D] rounded-lg hover:bg-black/5 transition-all"
                 >
                   {link.label}
                 </a>
@@ -117,7 +103,7 @@ export default function Navbar() {
               <a
                 href="#demo"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 px-5 py-3 bg-cta text-white text-sm font-semibold rounded-full text-center"
+                className="font-sans mt-2 px-5 py-3 bg-cta text-white text-sm font-semibold rounded-full text-center"
               >
                 Try Demo →
               </a>
