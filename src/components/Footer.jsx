@@ -126,7 +126,7 @@ export default function Footer() {
           {/* Left: copyright + disclaimer */}
           <div className="flex flex-col gap-1.5">
             <p className="text-xs text-text-muted opacity-50">
-              © {new Date().getFullYear()} NeuroDetect — Imperial College London. ME4 Design Project.
+              © {new Date().getFullYear()} NeuroDetect, Imperial College London. Machine Learning Course.
             </p>
             <p className="text-xs text-text-muted opacity-35 max-w-sm leading-relaxed">
               Not a certified medical device. All outputs must be reviewed by a qualified clinician before acting on them.
