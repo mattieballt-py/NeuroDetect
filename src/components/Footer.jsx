@@ -22,9 +22,13 @@ const links = {
     { label: 'Contact Us', href: '#contact' },
     { label: 'GitHub', href: '#', external: true },
   ],
+  Documentation: [
+    { label: 'Model Methodology', href: '#methodology' },
+    { label: 'Brain Tumour MRI Dataset', href: 'https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset', external: true },
+  ],
   Institution: [
     { label: 'Imperial College London', href: 'https://imperial.ac.uk', external: true },
-    { label: 'Department of Mechanical Engineering', href: 'https://imperial.ac.uk/mechanical-engineering', external: true },
+    { label: 'Mechanical Engineering', href: 'https://imperial.ac.uk/mechanical-engineering', external: true },
   ],
 }
 
@@ -41,7 +45,7 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10 mb-14"
         >
           {/* Brand column */}
           <motion.div variants={fadeUp}>

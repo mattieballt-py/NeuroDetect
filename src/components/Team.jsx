@@ -117,12 +117,10 @@ export default function Team() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="text-3xl md:text-5xl font-black text-theme tracking-tight leading-tight mb-6"
+            className="text-3xl md:text-5xl font-black text-theme tracking-tight leading-tight mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
           >
-            Built at{' '}
-            <span className="text-cta">Imperial College</span>
-            <br />
-            London
+            <span>Built at</span>
+            <img src="/imperial.svg" alt="Imperial College London" className="h-8 md:h-10 w-auto opacity-90 inline-block" />
           </motion.h2>
 
           <motion.p
@@ -136,42 +134,7 @@ export default function Team() {
             A multidisciplinary team of Mechanical Engineering students combining deep technical expertise with a genuine desire to improve diagnostic outcomes.
           </motion.p>
 
-          {/* Imperial badge */}
-          <motion.div
-            variants={fadeUp}
-            custom={3}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="flex justify-center mb-10"
-          >
-            <div className="rounded-xl border border-[rgba(232,242,246,0.1)] bg-surface/20 px-8 py-5 flex items-center justify-center">
-              <img src="/imperial.svg" alt="Imperial College London" className="h-8 w-auto opacity-85" />
-            </div>
-          </motion.div>
-
-          {/* Expertise pills */}
-          <motion.div
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
-          >
-            {expertise.map(({ icon, label }) => (
-              <motion.div
-                key={label}
-                variants={{
-                  hidden: { opacity: 0, y: 12 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] } },
-                }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-[rgba(232,242,246,0.1)] bg-surface/30 text-sm text-text-muted"
-              >
-                <span className="text-theme">{icon}</span>
-                <span>{label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
+          
         </div>
 
         {/* Photo grid — wider container, 2 → 3 → 4 columns across breakpoints */}
@@ -191,7 +154,7 @@ export default function Team() {
               <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(232,242,246,0.08)]">
                 <img
                   src={member.photo}
-                  alt={member.role}
+                  alt={member.name}
                   className="w-full h-full object-cover"
                   style={{ filter: 'grayscale(100%) contrast(1.05)' }}
                   loading="lazy"

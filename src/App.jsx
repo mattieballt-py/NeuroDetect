@@ -5,6 +5,7 @@ import Solution from './components/Solution'
 import HowItWorks from './components/HowItWorks'
 import Impact from './components/Impact'
 import Demo from './components/Demo'
+import Methodology from './components/Methodology'
 import Team from './components/Team'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
@@ -21,6 +22,7 @@ export default function App() {
         <HowItWorks />
         <Impact />
         <Demo />
+        <Methodology />
         <Team />
         <FAQ />
         <Contact />

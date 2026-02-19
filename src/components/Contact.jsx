@@ -266,20 +266,7 @@ export default function Contact() {
             </AnimatePresence>
           </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            custom={4}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="text-center text-xs text-text-muted mt-6 opacity-60"
-          >
-            Or email directly:{' '}
-            <a href="mailto:mb1223@ic.ac.uk" className="hover:text-theme transition-colors underline underline-offset-2">
-              mb1223@ic.ac.uk
-            </a>
-          </motion.p>
-
+          
         </div>
       </div>
     </section>
