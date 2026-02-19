@@ -49,38 +49,38 @@ const expertise = [
 
 const members = [
   {
-    name: 'Team Member',
-    role: 'Project Lead',
-    photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face&auto=format',
+    name: 'Mattie Ball',
+    degree: 'Mechanical Engineering',
+    photo: '/team/Mattie.jpg',
+  },
+  {
+    name: 'Jeremy Tan',
+    degree: 'Mechanical Engineering',
+    photo: '/team/Jeremy.jpg',
+  },
+  {
+    name: 'Nana',
+    degree: 'Mechanical Engineering',
+    photo: '/team/PHOTO-2026-02-19-13-46-26.jpg',
   },
   {
     name: 'Team Member',
-    role: 'ML Engineer',
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
-  {
-    name: 'Team Member',
-    role: 'Data Scientist',
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
-  {
-    name: 'Team Member',
-    role: 'AI Researcher',
+    degree: 'Mechanical Engineering',
     photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face&auto=format',
   },
   {
     name: 'Team Member',
-    role: 'Software Engineer',
+    degree: 'Mechanical Engineering',
     photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face&auto=format',
   },
   {
     name: 'Team Member',
-    role: 'Medical Imaging Lead',
+    degree: 'Mechanical Engineering',
     photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face&auto=format',
   },
   {
     name: 'Team Member',
-    role: 'Systems Engineer',
+    degree: 'Mechanical Engineering',
     photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format',
   },
 ]
@@ -199,28 +199,12 @@ export default function Team() {
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-theme leading-tight">{member.name}</div>
-                <div className="text-xs text-text-muted mt-0.5">{member.role}</div>
+                <div className="text-xs text-text-muted mt-0.5">{member.degree}</div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Credibility note */}
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
-            className="rounded-2xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.25)] px-8 py-6"
-          >
-            <p className="text-sm text-text-muted leading-relaxed">
-              This project was developed as part of the{' '}
-              <span className="text-theme font-medium">ME4 Design Project</span>{' '}
-              at Imperial College London — combining rigorous engineering methodology with real clinical relevance.
-            </p>
-          </motion.div>
-        </div>
 
       </div>
     </section>
