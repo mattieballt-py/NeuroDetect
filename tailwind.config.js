@@ -15,7 +15,7 @@ export default {
         'border-subtle': 'rgba(232,242,246,0.08)',
       },
       fontFamily: {
-        heading: ['Alegreya', 'Georgia', 'serif'],
+        heading: ['Georgia', 'serif'],
         sans: ['Source Sans 3', 'Source Sans Pro', 'system-ui', 'sans-serif'],
       },
       maxWidth: {

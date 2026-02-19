@@ -9,7 +9,6 @@ const fadeUp = {
   }),
 }
 
-// Photos scale + fade up in a wave — each one slightly after the previous
 const photoItem = {
   hidden: { opacity: 0, y: 20, scale: 0.94 },
   visible: {
@@ -103,9 +102,9 @@ export default function Team() {
       />
 
       <div className="max-w-content mx-auto relative">
-        <div className="max-w-2xl mx-auto text-center">
 
-          {/* Label → h2 → p in sequence */}
+        {/* Text content — centred, constrained to max-w-2xl */}
+        <div className="max-w-2xl mx-auto text-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex justify-center mb-5">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
               The Team
@@ -152,7 +151,7 @@ export default function Team() {
             </div>
           </motion.div>
 
-          {/* Expertise pills — stagger */}
+          {/* Expertise pills */}
           <motion.div
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
             initial="hidden"
@@ -174,39 +173,41 @@ export default function Team() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
 
-          {/* Team photos — wave stagger, scale from slightly smaller */}
-          <motion.div
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="flex flex-wrap justify-center gap-5 mb-12"
-          >
-            {members.map((member, i) => (
-              <motion.div
-                key={i}
-                variants={photoItem}
-                className="w-[calc(50%-10px)] sm:w-44 lg:w-40 flex flex-col items-center gap-3"
-              >
-                <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(232,242,246,0.08)]">
-                  <img
-                    src={member.photo}
-                    alt={member.role}
-                    className="w-full h-full object-cover"
-                    style={{ filter: 'grayscale(100%) contrast(1.05)' }}
-                    loading="lazy"
-                  />
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-theme leading-tight">{member.name}</div>
-                  <div className="text-xs text-text-muted mt-0.5">{member.role}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* Photo grid — wider container, 2 → 3 → 4 columns across breakpoints */}
+        <motion.div
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="flex flex-wrap justify-center gap-5 mb-12 max-w-4xl mx-auto"
+        >
+          {members.map((member, i) => (
+            <motion.div
+              key={i}
+              variants={photoItem}
+              className="w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] flex flex-col items-center gap-3"
+            >
+              <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(232,242,246,0.08)]">
+                <img
+                  src={member.photo}
+                  alt={member.role}
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'grayscale(100%) contrast(1.05)' }}
+                  loading="lazy"
+                />
+              </div>
+              <div className="text-center">
+                <div className="text-sm font-semibold text-theme leading-tight">{member.name}</div>
+                <div className="text-xs text-text-muted mt-0.5">{member.role}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Credibility note — last, as a foundation/context statement */}
+        {/* Credibility note */}
+        <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -221,6 +222,7 @@ export default function Team() {
             </p>
           </motion.div>
         </div>
+
       </div>
     </section>
   )
