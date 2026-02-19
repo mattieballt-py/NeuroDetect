@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
 // ─── scan card data ───────────────────────────────────────────────────────────
 const scanClasses = [
-  { label: 'Glioma',     accent: '#E71E22', glow: 'rgba(231,30,34,0.45)',   tag: '#E71E22' },
-  { label: 'Meningioma', accent: '#9eb8c4', glow: 'rgba(158,184,196,0.25)', tag: '#9eb8c4' },
-  { label: 'Pituitary',  accent: '#82b4ff', glow: 'rgba(130,180,255,0.35)', tag: '#82b4ff' },
-  { label: 'No Tumour',  accent: '#4ade80', glow: 'rgba(74,222,128,0.3)',   tag: '#4ade80' },
+  { label: 'Glioma',     accent: '#E71E22', image: '/Te-gl_115.jpg'     },
+  { label: 'Meningioma', accent: '#9eb8c4', image: '/Te-aug-me_11.jpg'  },
+  { label: 'Pituitary',  accent: '#82b4ff', image: '/Te-pi_122.jpg'     },
+  { label: 'No Tumour',  accent: '#4ade80', image: '/Te-no_102.jpg'     },
 ]
 
 // Resting stack positions (bottom → top)
@@ -27,21 +27,17 @@ function ScanCard({ scan }) {
       boxShadow: '0 16px 48px rgba(0,0,0,0.75)',
     }}>
       <div style={{ height: 3, background: scan.accent }} />
-      <div style={{ height: 192, background: '#05080b', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-        {/* Brain shape */}
-        <div style={{
-          width: 130, height: 150,
-          borderRadius: '50% 50% 46% 46% / 55% 55% 45% 45%',
-          background: 'radial-gradient(ellipse 72% 68% at 48% 44%, #333 0%, #1c1c1c 55%, #0e0e0e 82%)',
-          boxShadow: `0 0 36px 8px ${scan.glow}`,
-          position: 'relative', overflow: 'hidden',
+      <div style={{ height: 192, background: '#05080b', position: 'relative', overflow: 'hidden' }}>
+        <img
+          src={scan.image}
+          alt={`${scan.label} MRI scan`}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+        />
+        <span style={{
+          position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace',
+          color: 'rgba(232,242,246,0.65)', background: 'rgba(0,0,0,0.55)',
+          padding: '2px 6px', borderRadius: 4,
         }}>
-          {/* Scan slice lines */}
-          <div style={{ position: 'absolute', inset: '18% 10%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', opacity: 0.1 }}>
-            {[0,1,2,3,4,5].map(i => <div key={i} style={{ height: 1, background: '#E8F2F6' }} />)}
-          </div>
-        </div>
-        <span style={{ position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace', color: 'rgba(232,242,246,0.22)' }}>
           T1w · axial
         </span>
       </div>
@@ -106,7 +102,7 @@ function CNNPanel() {
             { cy: 50,  color: '#E71E22', label: 'Glioma'  },
             { cy: 73,  color: '#9eb8c4', label: 'Mening.' },
             { cy: 96,  color: '#82b4ff', label: 'Pituit.' },
-            { cy: 119, color: '#4ade80', label: 'Normal'  },
+            { cy: 119, color: '#4ade80', label: 'No Tu.'  },
           ].map(({ cy, color, label }) => (
             <g key={label}>
               <circle cx="161" cy={cy} r="5.5" fill={color} opacity="0.82"/>
@@ -141,24 +137,20 @@ function GradCAMPanel() {
 
       {/* Brain + heatmap */}
       <div style={{ height: 175, background: '#04070a', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        {/* Brain base */}
         <div style={{
           width: 130, height: 148,
           borderRadius: '50% 50% 46% 46% / 55% 55% 45% 45%',
           background: 'radial-gradient(ellipse 72% 68% at 48% 44%, #333 0%, #1c1c1c 55%, #0e0e0e 82%)',
           position: 'relative', overflow: 'hidden',
         }}>
-          {/* Scan lines */}
           <div style={{ position: 'absolute', inset: '18% 10%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', opacity: 0.09 }}>
             {[0,1,2,3,4,5].map(i => <div key={i} style={{ height: 1, background: '#E8F2F6' }} />)}
           </div>
-          {/* Heatmap overlay — localised hot spot */}
           <div style={{
             position: 'absolute', inset: 0,
             background: 'radial-gradient(ellipse 42% 38% at 56% 40%, rgba(231,30,34,0.82) 0%, rgba(255,120,30,0.5) 35%, rgba(255,200,50,0.2) 60%, transparent 80%)',
           }} />
         </div>
-        {/* Heatmap scale bar */}
         <div style={{ position: 'absolute', bottom: 8, right: 10, display: 'flex', gap: 2, alignItems: 'center' }}>
           <span style={{ fontSize: 8, color: 'rgba(232,242,246,0.3)', marginRight: 3 }}>low</span>
           {['#4ade80','#facc15','#f97316','#ef4444','#dc2626'].map(c => (
@@ -166,7 +158,6 @@ function GradCAMPanel() {
           ))}
           <span style={{ fontSize: 8, color: 'rgba(232,242,246,0.3)', marginLeft: 3 }}>high</span>
         </div>
-        {/* Grad-CAM label */}
         <span style={{ position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace', color: 'rgba(232,242,246,0.28)' }}>Grad-CAM</span>
       </div>
 
@@ -188,16 +179,25 @@ function GradCAMPanel() {
   )
 }
 
-function ArrowConnector({ opacity }) {
+// Always-visible white arrow between panels
+function ArrowConnector() {
   return (
-    <motion.div style={{ opacity }} className="flex flex-col items-center gap-1.5 shrink-0">
-      <div style={{ width: 1, height: 24, background: 'rgba(232,242,246,0.08)' }} />
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="15" stroke="rgba(232,242,246,0.08)" strokeWidth="1"/>
-        <path d="M10 16h12M17 11l5 5-5 5" stroke="rgba(232,242,246,0.45)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    <div className="shrink-0 flex items-center px-2">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="rgba(232,242,246,0.15)" strokeWidth="1"/>
+        <path d="M11 18h14M20 12l6 6-6 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
-      <div style={{ width: 1, height: 24, background: 'rgba(232,242,246,0.08)' }} />
-    </motion.div>
+    </div>
+  )
+}
+
+// Downward arrow for mobile
+function ArrowDown() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="17" stroke="rgba(232,242,246,0.15)" strokeWidth="1"/>
+      <path d="M18 11v14M12 20l6 6 6-6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
   )
 }
 
@@ -212,40 +212,33 @@ export default function Methodology() {
 
   const smooth = useSpring(scrollYProgress, { stiffness: 48, damping: 20 })
 
-  // Scan cards stacking in
-  const s0op = useTransform(smooth, [0.03, 0.10], [0, 1])
-  const s0y  = useTransform(smooth, [0.03, 0.10], [52, 0])
-  const s1op = useTransform(smooth, [0.09, 0.16], [0, 1])
-  const s1y  = useTransform(smooth, [0.09, 0.16], [52, 0])
-  const s2op = useTransform(smooth, [0.14, 0.21], [0, 1])
-  const s2y  = useTransform(smooth, [0.14, 0.21], [52, 0])
-  const s3op = useTransform(smooth, [0.19, 0.26], [0, 1])
-  const s3y  = useTransform(smooth, [0.19, 0.26], [52, 0])
+  // Scan cards stack in one by one
+  const s0op = useTransform(smooth, [0.03, 0.12], [0, 1])
+  const s0y  = useTransform(smooth, [0.03, 0.12], [52, 0])
+  const s1op = useTransform(smooth, [0.10, 0.19], [0, 1])
+  const s1y  = useTransform(smooth, [0.10, 0.19], [52, 0])
+  const s2op = useTransform(smooth, [0.16, 0.25], [0, 1])
+  const s2y  = useTransform(smooth, [0.16, 0.25], [52, 0])
+  const s3op = useTransform(smooth, [0.22, 0.31], [0, 1])
+  const s3y  = useTransform(smooth, [0.22, 0.31], [52, 0])
 
   const scanOpacities = [s0op, s1op, s2op, s3op]
   const scanYs        = [s0y,  s1y,  s2y,  s3y]
 
-  // Panel 1 label
-  const p1LabelOp = useTransform(smooth, [0.04, 0.14], [0, 1])
-
-  // Arrow 1
-  const arr1op = useTransform(smooth, [0.30, 0.40], [0, 1])
+  const p1LabelOp = useTransform(smooth, [0.05, 0.18], [0, 1])
 
   // Panel 2 (CNN)
-  const p2op = useTransform(smooth, [0.40, 0.52], [0, 1])
-  const p2y  = useTransform(smooth, [0.40, 0.52], [44, 0])
-
-  // Arrow 2
-  const arr2op = useTransform(smooth, [0.56, 0.65], [0, 1])
+  const p2op = useTransform(smooth, [0.42, 0.56], [0, 1])
+  const p2y  = useTransform(smooth, [0.42, 0.56], [44, 0])
 
   // Panel 3 (Grad-CAM)
-  const p3op = useTransform(smooth, [0.65, 0.77], [0, 1])
-  const p3y  = useTransform(smooth, [0.65, 0.77], [44, 0])
+  const p3op = useTransform(smooth, [0.68, 0.82], [0, 1])
+  const p3y  = useTransform(smooth, [0.68, 0.82], [44, 0])
 
   return (
     <section
       id="methodology"
-      className="relative overflow-hidden"
+      className="relative"
       style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #111820 50%, #0D0D0D 100%)' }}
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
@@ -254,46 +247,25 @@ export default function Methodology() {
       <div ref={containerRef} style={{ height: '320vh' }} className="hidden lg:block">
         <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
 
-          {/* Header — always visible inside the sticky viewport */}
-          <div className="text-center pt-24 pb-10 shrink-0 px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55 }}
-              className="flex justify-center mb-5"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
-                The Model
-              </span>
-            </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className="text-3xl md:text-5xl font-black text-theme tracking-tight leading-tight mb-3"
-            >
-              How We Trained{' '}
-              <span className="text-cta">NeuroDetect</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.2 }}
-              className="text-text-muted text-base max-w-lg mx-auto"
-            >
-              Scroll to step through the pipeline — from raw MRI slices, through the neural network, to an explainable visual output.
-            </motion.p>
+          {/* Header — always visible, not scroll-driven */}
+          <div className="text-center pt-20 pb-6 shrink-0 px-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted mb-5">
+              The Model
+            </span>
+            <h2 className="text-3xl font-black text-theme tracking-tight leading-tight mb-3 mt-5">
+              How We Trained <span className="text-cta">NeuroDetect</span>
+            </h2>
+            <p className="text-text-muted text-base max-w-sm mx-auto">
+              From raw MRI slices, through the neural network, to an explainable visual output.
+            </p>
           </div>
 
-          {/* Three-panel row */}
-          <div className="flex-1 flex items-center justify-center gap-6 px-8 pb-10">
+          {/* Three-panel row — fills remaining space, panels appear on scroll */}
+          <div className="flex-1 flex items-center justify-center gap-4 px-8 pb-8">
 
             {/* Panel 1 — Scan stack */}
             <div className="flex flex-col items-center gap-5 shrink-0">
-              <div style={{ width: 210, height: 320, position: 'relative' }}>
+              <div style={{ width: 210, height: 240, position: 'relative' }}>
                 {scanClasses.map((scan, i) => (
                   <motion.div
                     key={scan.label}
@@ -317,8 +289,8 @@ export default function Methodology() {
               </motion.div>
             </div>
 
-            {/* Arrow 1 */}
-            <ArrowConnector opacity={arr1op} />
+            {/* Arrow 1 — always visible */}
+            <ArrowConnector />
 
             {/* Panel 2 — CNN */}
             <motion.div style={{ opacity: p2op, y: p2y }} className="flex flex-col items-center gap-5 shrink-0">
@@ -329,8 +301,8 @@ export default function Methodology() {
               </div>
             </motion.div>
 
-            {/* Arrow 2 */}
-            <ArrowConnector opacity={arr2op} />
+            {/* Arrow 2 — always visible */}
+            <ArrowConnector />
 
             {/* Panel 3 — Grad-CAM */}
             <motion.div style={{ opacity: p3op, y: p3y }} className="flex flex-col items-center gap-5 shrink-0">
@@ -361,9 +333,15 @@ export default function Methodology() {
 
         <div className="flex flex-col items-center gap-8 max-w-xs mx-auto">
           <div className="flex flex-col items-center gap-3">
-            <div style={{ position: 'relative', width: 210, height: 320 }}>
+            <div style={{ position: 'relative', width: 210, height: 260 }}>
               {scanClasses.map((scan, i) => (
-                <div key={scan.label} style={{ position: 'absolute', top: 0, left: 0, zIndex: i + 1, transform: `rotate(${stackRest[i].rotate}deg) translateX(${stackRest[i].x}px) translateY(${stackRest[i].y}px)` }}>
+                <div
+                  key={scan.label}
+                  style={{
+                    position: 'absolute', top: 0, left: 0, zIndex: i + 1,
+                    transform: `rotate(${stackRest[i].rotate}deg) translateX(${stackRest[i].x}px) translateY(${stackRest[i].y}px)`,
+                  }}
+                >
                   <ScanCard scan={scan} />
                 </div>
               ))}
@@ -374,7 +352,7 @@ export default function Methodology() {
             </div>
           </div>
 
-          <div className="w-px h-10 bg-[rgba(232,242,246,0.1)]" />
+          <ArrowDown />
 
           <div className="flex flex-col items-center gap-3">
             <CNNPanel />
@@ -384,7 +362,7 @@ export default function Methodology() {
             </div>
           </div>
 
-          <div className="w-px h-10 bg-[rgba(232,242,246,0.1)]" />
+          <ArrowDown />
 
           <div className="flex flex-col items-center gap-3">
             <GradCAMPanel />
