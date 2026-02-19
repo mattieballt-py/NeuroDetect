@@ -9,6 +9,17 @@ const fadeUp = {
   }),
 }
 
+// Headline lines stagger independently
+const headlineContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.22 } },
+}
+
+const headlineLine = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+}
+
 const stats = [
   {
     icon: (
@@ -50,10 +61,8 @@ export default function Stakes() {
       id="stakes"
       className="relative bg-bg py-28 px-6 overflow-hidden"
     >
-      {/* Subtle top border fade */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
 
-      {/* Background surface block */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -77,25 +86,28 @@ export default function Stakes() {
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — two lines stagger in sequence */}
         <motion.h2
-          variants={fadeUp}
+          variants={headlineContainer}
           initial="hidden"
           whileInView="visible"
-          custom={1}
           viewport={{ once: true, margin: '-80px' }}
           className="text-3xl md:text-5xl font-black text-theme text-center leading-tight mb-5 tracking-tight max-w-2xl mx-auto"
         >
-          Early detection saves lives.
-          <br />
-          <span className="text-text-muted font-semibold text-2xl md:text-3xl">
+          <motion.span variants={headlineLine} className="block">
+            Early detection saves lives.
+          </motion.span>
+          <motion.span
+            variants={headlineLine}
+            className="block text-text-muted font-semibold text-2xl md:text-3xl mt-2"
+          >
             But radiologists are drowning in scans.
-          </span>
+          </motion.span>
         </motion.h2>
 
-        {/* Stat cards */}
+        {/* Stat cards — stagger left to right */}
         <motion.div
-          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16 } } }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
@@ -104,7 +116,10 @@ export default function Stakes() {
           {stats.map(({ icon, label, detail }) => (
             <motion.div
               key={label}
-              variants={fadeUp}
+              variants={{
+                hidden: { opacity: 0, y: 36, scale: 0.97 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+              }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="glass-card gradient-border rounded-2xl p-7 flex flex-col gap-4"
             >
@@ -119,16 +134,15 @@ export default function Stakes() {
           ))}
         </motion.div>
 
-        {/* Pull quote */}
-        <motion.div
-          variants={fadeUp}
-          custom={2}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="max-w-2xl mx-auto text-center"
-        >
-          <div className="rounded-2xl border border-[rgba(231,30,34,0.2)] bg-[rgba(231,30,34,0.05)] px-8 py-7">
+        {/* Pull quote — scales in after cards, feels like a conclusion */}
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97, y: 16 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
+            className="rounded-2xl border border-[rgba(231,30,34,0.2)] bg-[rgba(231,30,34,0.05)] px-8 py-7"
+          >
             <p className="text-xl md:text-2xl font-semibold text-theme leading-relaxed mb-3">
               Current AI models are{' '}
               <span className="text-cta font-black italic">"black boxes"</span>
@@ -138,8 +152,8 @@ export default function Stakes() {
               that's not good enough. Doctors need to see{' '}
               <span className="text-theme font-medium">WHY</span> the AI made its decision.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

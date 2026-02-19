@@ -1,5 +1,44 @@
 import { motion } from 'framer-motion'
 
+// Before panel slides from the left — reinforces "old / problem" direction
+const slideLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] },
+  },
+}
+
+// After panel slides from the right — reinforces "new / solution" direction
+const slideRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay: 0.12 },
+  },
+}
+
+// List items inside each panel stagger in from a smaller horizontal nudge
+const beforeItem = {
+  hidden: { opacity: 0, x: -14 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 + i * 0.1 },
+  }),
+}
+
+const afterItem = {
+  hidden: { opacity: 0, x: 14 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1], delay: 0.32 + i * 0.1 },
+  }),
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
@@ -8,6 +47,18 @@ const fadeUp = {
     transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.1 },
   }),
 }
+
+const IconX = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+    <path d="M2 2l8 8M10 2L2 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+)
+
+const IconCheck = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+    <path d="M1.5 6l3 3 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
 
 const before = [
   'Radiologists review every scan manually',
@@ -32,7 +83,6 @@ export default function Impact() {
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
 
-      {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -41,7 +91,6 @@ export default function Impact() {
       />
 
       <div className="max-w-content mx-auto relative">
-        {/* Header */}
         <div className="text-center mb-14">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex justify-center mb-5">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
@@ -60,63 +109,70 @@ export default function Impact() {
           </motion.h2>
         </div>
 
-        {/* Comparison grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          {/* Before */}
+
+          {/* Before — slides in from left */}
           <motion.div
-            variants={fadeUp}
+            variants={slideLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             className="rounded-2xl border border-[rgba(232,242,246,0.08)] bg-[rgba(20,10,10,0.6)] p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[rgba(200,50,50,0.15)] flex items-center justify-center text-base">✗</div>
+              <div className="w-8 h-8 rounded-full bg-[rgba(200,50,50,0.15)] border border-[rgba(248,113,113,0.2)] flex items-center justify-center text-[#f87171]">
+                <IconX />
+              </div>
               <h3 className="text-lg font-bold text-[#f87171]">Without NeuroDetect</h3>
             </div>
             <ul className="space-y-4">
               {before.map((item, i) => (
                 <motion.li
                   key={item}
-                  variants={fadeUp}
-                  custom={i * 0.5}
+                  variants={beforeItem}
+                  custom={i}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
-                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full border border-[rgba(248,113,113,0.3)] flex items-center justify-center text-[10px] text-[#f87171]">✗</span>
+                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full border border-[rgba(248,113,113,0.3)] flex items-center justify-center text-[#f87171]">
+                    <IconX />
+                  </span>
                   <span className="text-sm text-text-muted leading-relaxed">{item}</span>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
 
-          {/* After */}
+          {/* After — slides in from right */}
           <motion.div
-            variants={fadeUp}
-            custom={1}
+            variants={slideRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             className="rounded-2xl border border-[rgba(74,222,128,0.15)] bg-[rgba(10,25,15,0.6)] p-8 shadow-[0_0_48px_rgba(74,222,128,0.04)]"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[rgba(74,222,128,0.12)] flex items-center justify-center text-base">✓</div>
+              <div className="w-8 h-8 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.25)] flex items-center justify-center text-[#4ade80]">
+                <IconCheck />
+              </div>
               <h3 className="text-lg font-bold text-[#4ade80]">With NeuroDetect</h3>
             </div>
             <ul className="space-y-4">
               {after.map((item, i) => (
                 <motion.li
                   key={item}
-                  variants={fadeUp}
-                  custom={i * 0.5}
+                  variants={afterItem}
+                  custom={i}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
-                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.3)] flex items-center justify-center text-[10px] text-[#4ade80]">✓</span>
+                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.3)] flex items-center justify-center text-[#4ade80]">
+                    <IconCheck />
+                  </span>
                   <span className="text-sm text-text-muted leading-relaxed">{item}</span>
                 </motion.li>
               ))}
@@ -124,13 +180,12 @@ export default function Impact() {
           </motion.div>
         </div>
 
-        {/* Pull quote */}
+        {/* Pull quote — scales in as a conclusion after the contrast lands */}
         <motion.div
-          variants={fadeUp}
-          custom={3}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, scale: 0.96, y: 16 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center max-w-2xl mx-auto"
         >
           <blockquote className="relative">

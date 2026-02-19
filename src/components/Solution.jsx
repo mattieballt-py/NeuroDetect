@@ -9,6 +9,17 @@ const fadeUp = {
   }),
 }
 
+// Step cards enter with stronger y + slight scale
+const stepCard = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.18 },
+  }),
+}
+
 const steps = [
   {
     number: '01',
@@ -70,12 +81,10 @@ const steps = [
     visual: (
       <div className="w-full rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#1a1a1a] relative">
         <div className="aspect-[4/3] relative flex items-center justify-center">
-          {/* Simulated MRI with heatmap */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 55% 40%, rgba(231,30,34,0.35) 0%, rgba(231,100,34,0.2) 25%, transparent 55%), linear-gradient(135deg, #1a2a30, #111)' }} />
           <div className="relative z-10 text-center">
             <div className="text-xs font-mono text-text-muted opacity-60">Grad-CAM overlay</div>
           </div>
-          {/* Scanning line animation */}
           <motion.div
             className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cta/60 to-transparent"
             initial={{ top: '10%' }}
@@ -182,24 +191,55 @@ export default function Solution() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
-          {/* Connector lines (desktop only) */}
+
+          {/* Connector line 1: step 1 → step 2 (grows on scroll) */}
           <div className="hidden lg:flex absolute top-[72px] left-[33%] right-[33%] items-center pointer-events-none">
-            <div className="flex-1 h-px bg-gradient-to-r from-[rgba(232,242,246,0.15)] to-[rgba(231,30,34,0.3)]" />
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="shrink-0">
+            <motion.div
+              className="flex-1 h-px bg-gradient-to-r from-[rgba(232,242,246,0.15)] to-[rgba(231,30,34,0.3)]"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.55 }}
+              style={{ transformOrigin: 'left' }}
+            />
+            <motion.svg
+              width="8" height="12" viewBox="0 0 8 12" fill="none"
+              className="shrink-0"
+              initial={{ opacity: 0, x: -5 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 1.3 }}
+            >
               <path d="M1 1l6 5-6 5" stroke="rgba(231,30,34,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            </motion.svg>
           </div>
-          <div className="hidden lg:flex absolute top-[72px] left-[66%] right-0 w-1/4 items-center pointer-events-none" style={{ left: 'calc(66.66% - 16px)', right: '16.66%' }}>
-            <div className="flex-1 h-px bg-gradient-to-r from-[rgba(231,30,34,0.3)] to-[rgba(232,242,246,0.15)]" />
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="shrink-0">
+
+          {/* Connector line 2: step 2 → step 3 */}
+          <div className="hidden lg:flex absolute top-[72px] items-center pointer-events-none" style={{ left: 'calc(66.66% - 16px)', right: '16.66%' }}>
+            <motion.div
+              className="flex-1 h-px bg-gradient-to-r from-[rgba(231,30,34,0.3)] to-[rgba(232,242,246,0.15)]"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.75 }}
+              style={{ transformOrigin: 'left' }}
+            />
+            <motion.svg
+              width="8" height="12" viewBox="0 0 8 12" fill="none"
+              className="shrink-0"
+              initial={{ opacity: 0, x: -5 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 1.5 }}
+            >
               <path d="M1 1l6 5-6 5" stroke="rgba(232,242,246,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            </motion.svg>
           </div>
 
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
-              variants={fadeUp}
+              variants={stepCard}
               custom={i}
               initial="hidden"
               whileInView="visible"
@@ -229,8 +269,11 @@ export default function Solution() {
 
               {/* Callout (step 2 only) */}
               {step.callout && (
-                <div className="rounded-xl border border-cta/20 bg-[rgba(231,30,34,0.06)] px-4 py-3 text-xs font-medium text-theme leading-relaxed">
-                  <span className="text-cta mr-1">✓</span> {step.callout}
+                <div className="rounded-xl border border-cta/20 bg-[rgba(231,30,34,0.06)] px-4 py-3 text-xs font-medium text-theme leading-relaxed flex items-start gap-2">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 mt-0.5 text-cta" aria-hidden>
+                    <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {step.callout}
                 </div>
               )}
 
@@ -254,14 +297,45 @@ export default function Solution() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { icon: '🔥', text: 'Visual heatmaps show which parts triggered the diagnosis' },
-              { icon: '✓', text: 'Verification checks confirm the AI\'s focus areas matter' },
-              { icon: '📊', text: 'Similar case examples help doctors verify results' },
-            ].map(({ icon, text }) => (
-              <div key={text} className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(232,242,246,0.07)] bg-surface/15">
-                <span className="text-xl shrink-0">{icon}</span>
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                    <path d="M9 1.5C7 4.5 5.5 6.8 5.5 9.3a3.5 3.5 0 007 0c0-1.7-.9-3-1.9-4.4-.3 1.2-1.1 2-2.2 2.3C9 5.9 8.7 3.6 9 1.5z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+                text: 'Visual heatmaps show which parts triggered the diagnosis',
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                    <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.6"/>
+                    <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+                text: "Verification checks confirm the AI's focus areas matter",
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                    <rect x="1.5" y="8" width="3.5" height="8" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+                    <rect x="7.25" y="5" width="3.5" height="11" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+                    <rect x="13" y="1.5" width="3.5" height="14.5" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+                  </svg>
+                ),
+                text: 'Similar case examples help doctors verify results',
+              },
+            ].map(({ icon, text }, i) => (
+              <motion.div
+                key={text}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.12 }}
+                className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(232,242,246,0.07)] bg-surface/15"
+              >
+                <span className="shrink-0 mt-0.5 text-theme">{icon}</span>
                 <span className="text-sm text-text-muted leading-relaxed">{text}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
           <p className="text-center text-sm text-text-muted mt-6 opacity-70">

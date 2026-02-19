@@ -1,6 +1,22 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
+// Each element fades up; `custom` sets the delay
+const fadeIn = {
+  hidden: { opacity: 0, y: 18 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay },
+  }),
+}
+
+// Divider line grows from left
+const growLine = {
+  hidden: { opacity: 0, scaleX: 0 },
+  visible: { opacity: 1, scaleX: 1, transition: { duration: 0.55, ease: 'easeOut', delay: 0.48 } },
+}
+
 export default function Hero() {
   const containerRef = useRef(null)
 
@@ -11,85 +27,134 @@ export default function Hero() {
 
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 55, damping: 22 })
 
-  // Plain scan: full opacity at top, fades out by 40% scroll
-  const plainOpacity = useTransform(smoothProgress, [0, 0.38], [1, 0])
-  // Detected scan: fades in from 15% → 55% scroll, with a gentle scale-in
-  const detectedOpacity = useTransform(smoothProgress, [0.15, 0.52], [0, 1])
-  const detectedScale   = useTransform(smoothProgress, [0.15, 0.55], [1.03, 1])
-
-  // Scroll nudge hint fades in after a moment, then out mid-scroll
-  const hintOpacity = useTransform(smoothProgress, [0, 0.05, 0.45, 0.55], [0, 1, 1, 0])
-
-  // Hero text drifts up and fades as user scrolls
-  const textOpacity = useTransform(smoothProgress, [0, 0.28], [1, 0])
-  const textY        = useTransform(smoothProgress, [0, 0.28], [0, -36])
+  const img1Opacity = useTransform(smoothProgress, [0, 0.38], [1, 0])
+  const img2Opacity = useTransform(smoothProgress, [0.15, 0.52], [0, 1])
+  const img2Scale   = useTransform(smoothProgress, [0.15, 0.55], [1.03, 1])
+  const hintOpacity = useTransform(smoothProgress, [0, 0.06, 0.45, 0.55], [0, 1, 1, 0])
 
   return (
-    <div ref={containerRef} className="relative" style={{ height: '220vh' }}>
-      <div className="sticky top-0 h-screen overflow-hidden bg-bg">
+    <div ref={containerRef} style={{ height: '220vh' }}>
+      <div className="sticky top-0 h-screen overflow-hidden bg-bg flex flex-col md:flex-row">
 
-        {/* Ambient glow from top */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 90% 55% at 50% 0%, rgba(41,55,63,0.55) 0%, transparent 65%)',
-          }}
-        />
+        {/* ── LEFT: sticky text column ────────────────────────────── */}
+        <div className="relative z-10 flex flex-col justify-center px-8 lg:px-16 pt-20 pb-10 md:pb-0 w-full md:w-[44%] shrink-0">
 
-        {/* ── Image stack ─────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 pt-16">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse 120% 60% at -10% 50%, rgba(41,55,63,0.45) 0%, transparent 70%)',
+            }}
+          />
 
-          {/* Image 1 — Grad-CAM detection panel (shown first) */}
-          <motion.div
-            style={{ opacity: plainOpacity }}
-            className="absolute inset-0 flex items-center justify-center px-4 pt-16"
-          >
-            <img
-              src="/mri-detected.jpg"
-              alt="Selection of brain MRI scans with Grad-CAM overlay"
-              className="max-w-[min(860px,92vw)] max-h-[70vh] w-auto h-auto object-contain rounded-xl shadow-[0_0_80px_rgba(232,242,246,0.05)]"
-            />
-          </motion.div>
+          {/* Staggered entrance — initial/animate (not whileInView: hero is always visible) */}
+          <motion.div initial="hidden" animate="visible" className="relative">
 
-          {/* Image 2 — plain MRI panel (revealed on scroll) */}
-          <motion.div
-            style={{ opacity: detectedOpacity, scale: detectedScale }}
-            className="absolute inset-0 flex items-center justify-center px-4 pt-16"
-          >
-            {/* Warm red glow behind revealed image */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(231,30,34,0.07) 0%, transparent 70%)',
-              }}
-            />
-            <div className="relative">
-              <img
-                src="/mri-plain.jpg"
-                alt="Brain MRI scans"
-                className="max-w-[min(860px,92vw)] max-h-[70vh] w-auto h-auto object-contain rounded-xl shadow-[0_0_100px_rgba(231,30,34,0.12)]"
-              />
-              {/* Detection active badge */}
-              <motion.div
-                style={{ opacity: detectedOpacity }}
-                className="absolute top-3 right-3 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"
-              >
-                <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
-                <span className="text-xs font-semibold text-text-primary font-sans">AI Analysis Active</span>
-              </motion.div>
+            {/* Stats: each row enters in sequence */}
+            <div className="flex flex-col gap-4 mb-10">
+              {[
+                { number: '13,000', label: 'brain tumours per year in the UK' },
+                { number: '1.6M',   label: 'people waiting for scans' },
+                { number: '30%',    label: 'radiologist shortage' },
+              ].map(({ number, label }, i) => (
+                <motion.div
+                  key={label}
+                  variants={fadeIn}
+                  custom={0.1 + i * 0.14}
+                  className="flex items-baseline gap-3"
+                >
+                  <span className="font-heading text-3xl lg:text-4xl font-black text-theme leading-none tabular-nums">
+                    {number}
+                  </span>
+                  <span className="font-sans text-sm text-text-muted leading-snug">{label}</span>
+                </motion.div>
+              ))}
             </div>
+
+            {/* Divider — grows left → right after stats */}
+            <motion.div
+              variants={growLine}
+              className="w-12 h-px bg-cta mb-8"
+              style={{ transformOrigin: 'left' }}
+            />
+
+            {/* Headline */}
+            <motion.h1
+              variants={fadeIn}
+              custom={0.6}
+              className="font-heading text-4xl lg:text-5xl xl:text-[3.5rem] font-black leading-[1.08] text-theme mb-5"
+            >
+              What if AI could
+              <br />
+              <span className="text-cta italic">help?</span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeIn}
+              custom={0.72}
+              className="font-sans text-text-muted text-base lg:text-lg max-w-sm mb-8 leading-relaxed"
+            >
+              NeuroDetect uses explainable AI to flag high-risk brain MRI scans — showing radiologists exactly where to look.
+            </motion.p>
+
+            <motion.a
+              variants={fadeIn}
+              custom={0.84}
+              href="#stakes"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="font-sans inline-flex items-center gap-2 px-7 py-3.5 bg-cta text-white font-semibold rounded-full text-base glow-cta hover:glow-cta-hover hover:bg-cta-hover transition-all duration-200 w-fit"
+            >
+              See How It Works
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="mt-0.5">
+                <path d="M7.5 2.5v10M7.5 12.5l5-5M7.5 12.5l-5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.a>
           </motion.div>
         </div>
 
-        {/* Scroll hint */}
+        {/* ── RIGHT: full-height image panel ──────────────────────── */}
+        <div className="relative flex-1 h-full min-h-0">
+
+          <div
+            className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, #0D0D0D, transparent)' }}
+          />
+
+          {/* Image 1 — Grad-CAM detection (shown first) */}
+          <motion.div style={{ opacity: img1Opacity }} className="absolute inset-0">
+            <img
+              src="/mri-detected.jpg"
+              alt="Selection of brain MRI scans with Grad-CAM overlay"
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+
+          {/* Image 2 — plain MRI (crossfades in on scroll) */}
+          <motion.div style={{ opacity: img2Opacity, scale: img2Scale }} className="absolute inset-0">
+            <div
+              className="absolute inset-0 pointer-events-none z-10"
+              style={{
+                background: 'radial-gradient(ellipse 70% 50% at 60% 50%, rgba(231,30,34,0.06) 0%, transparent 70%)',
+              }}
+            />
+            <img src="/mri-plain.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
+            <motion.div
+              style={{ opacity: img2Opacity }}
+              className="absolute top-6 right-6 z-20 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"
+            >
+              <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
+              <span className="text-xs font-semibold text-text-primary font-sans">AI Analysis Active</span>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* ── Scroll hint — centred at bottom ───────── */}
         <motion.div
           style={{ opacity: hintOpacity }}
-          className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-20"
         >
           <span className="text-[11px] font-sans font-medium text-text-muted tracking-[0.18em] uppercase">
-            Scroll to reveal detection
+            Scroll to reveal
           </span>
           <motion.div
             animate={{ y: [0, 5, 0] }}
@@ -98,45 +163,6 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* ── Text overlay (bottom of hero) ──────────── */}
-        <motion.div
-          style={{ opacity: textOpacity, y: textY }}
-          className="absolute bottom-0 left-0 right-0 pb-14 px-6 flex flex-col items-center text-center pointer-events-none"
-        >
-          {/* Stats strip */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8">
-            {[
-              { number: '13,000', label: 'brain tumours per year in the UK' },
-              { number: '1.6M',   label: 'people waiting for scans' },
-              { number: '30%',    label: 'radiologist shortage' },
-            ].map(({ number, label }) => (
-              <div key={label} className="text-center">
-                <div className="font-heading text-3xl md:text-4xl font-black text-theme leading-none">{number}</div>
-                <div className="font-sans text-xs text-text-muted mt-1 max-w-[130px] leading-snug">{label}</div>
-              </div>
-            ))}
-          </div>
-
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-[5rem] font-black leading-[1.06] text-theme max-w-3xl mb-5">
-            What if AI could
-            <span className="text-cta italic"> help?</span>
-          </h1>
-          <p className="font-sans text-text-muted text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
-            NeuroDetect uses explainable AI to flag high-risk brain MRI scans — showing radiologists exactly where to look.
-          </p>
-
-          <motion.a
-            href="#stakes"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="pointer-events-auto font-sans inline-flex items-center gap-2 px-7 py-3.5 bg-cta text-white font-semibold rounded-full text-base glow-cta hover:glow-cta-hover hover:bg-cta-hover transition-all duration-200"
-          >
-            See How It Works
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="mt-0.5">
-              <path d="M7.5 2.5v10M7.5 12.5l5-5M7.5 12.5l-5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.a>
-        </motion.div>
       </div>
     </div>
   )

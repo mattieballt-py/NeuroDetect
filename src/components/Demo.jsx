@@ -185,15 +185,29 @@ export default function Demo() {
         >
           {/* Upload / Sample selector */}
           <div className="glass-card gradient-border rounded-2xl p-8">
-            {/* Sample buttons */}
-            <div className="mb-6">
-              <p className="text-sm font-medium text-text-muted mb-4">
+
+            {/* Sample buttons — stagger in left to right */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } } }}
+              className="mb-6"
+            >
+              <motion.p
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.4 } } }}
+                className="text-sm font-medium text-text-muted mb-4"
+              >
                 Choose a sample scan to analyse:
-              </p>
+              </motion.p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {SAMPLE_RESULTS.map((sample, i) => (
                   <motion.button
                     key={sample.label}
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] } },
+                    }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => { setSelectedSample(i); reset(); }}
@@ -204,24 +218,35 @@ export default function Demo() {
                         : 'border-[rgba(232,242,246,0.08)] bg-surface/20 text-text-muted hover:border-[rgba(232,242,246,0.18)] hover:text-theme'
                     } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
-                    <div className="font-medium text-xs mb-1 text-theme opacity-70">
-                      {sample.isPositive ? '🔴' : '🟢'} {sample.label.split(' — ')[1]}
+                    <div className="font-medium text-xs mb-1 text-theme opacity-70 flex items-center gap-1.5">
+                      <span className={`w-2 h-2 rounded-full shrink-0 ${sample.isPositive ? 'bg-cta' : 'bg-[#4ade80]'}`} />
+                      {sample.label.split(' — ')[1]}
                     </div>
                     <div className="text-[10px] opacity-60">{sample.label.split(' — ')[0]}</div>
                   </motion.button>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Divider */}
-            <div className="flex items-center gap-3 mb-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              className="flex items-center gap-3 mb-6"
+            >
               <div className="flex-1 h-px bg-[rgba(232,242,246,0.06)]" />
               <span className="text-xs text-text-muted opacity-50">or</span>
               <div className="flex-1 h-px bg-[rgba(232,242,246,0.06)]" />
-            </div>
+            </motion.div>
 
-            {/* File upload zone */}
-            <div
+            {/* File upload zone — appears after buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
               onClick={() => fileRef.current?.click()}
               className="border-2 border-dashed border-[rgba(232,242,246,0.1)] hover:border-[rgba(232,242,246,0.2)] rounded-xl p-6 flex flex-col items-center gap-2 cursor-pointer transition-colors duration-200 mb-6"
             >
@@ -232,42 +257,49 @@ export default function Demo() {
               </svg>
               <span className="text-sm text-text-muted opacity-60">Upload your own MRI scan</span>
               <span className="text-xs text-text-muted opacity-40">JPEG, PNG, DICOM — max 20 MB</span>
-            </div>
+            </motion.div>
 
-            {/* Run button */}
-            <motion.button
-              whileHover={{ scale: selectedSample === null ? 1 : 1.02 }}
-              whileTap={{ scale: selectedSample === null ? 1 : 0.97 }}
-              onClick={() => selectedSample !== null && runDemo(selectedSample)}
-              disabled={selectedSample === null || phase === 'uploading' || phase === 'analysing'}
-              className={`w-full py-3.5 rounded-full font-semibold text-base transition-all duration-200 flex items-center justify-center gap-3 ${
-                selectedSample === null || phase === 'uploading' || phase === 'analysing'
-                  ? 'bg-surface/40 text-text-muted cursor-not-allowed'
-                  : 'bg-cta text-white glow-cta hover:glow-cta-hover hover:bg-cta-hover'
-              }`}
+            {/* Run button — appears last, drawing the eye down */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.75 }}
             >
-              {phase === 'uploading' && (
-                <>
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                  />
-                  Uploading scan…
-                </>
-              )}
-              {phase === 'analysing' && (
-                <>
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                  />
-                  Analysing with AI…
-                </>
-              )}
-              {(phase === 'idle' || phase === 'done') && 'Run Analysis →'}
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: selectedSample === null ? 1 : 1.02 }}
+                whileTap={{ scale: selectedSample === null ? 1 : 0.97 }}
+                onClick={() => selectedSample !== null && runDemo(selectedSample)}
+                disabled={selectedSample === null || phase === 'uploading' || phase === 'analysing'}
+                className={`w-full py-3.5 rounded-full font-semibold text-base transition-all duration-200 flex items-center justify-center gap-3 ${
+                  selectedSample === null || phase === 'uploading' || phase === 'analysing'
+                    ? 'bg-surface/40 text-text-muted cursor-not-allowed'
+                    : 'bg-cta text-white glow-cta hover:glow-cta-hover hover:bg-cta-hover'
+                }`}
+              >
+                {phase === 'uploading' && (
+                  <>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
+                      className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                    />
+                    Uploading scan…
+                  </>
+                )}
+                {phase === 'analysing' && (
+                  <>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}
+                      className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                    />
+                    Analysing with AI…
+                  </>
+                )}
+                {(phase === 'idle' || phase === 'done') && 'Run Analysis →'}
+              </motion.button>
+            </motion.div>
 
             {/* Progress bar */}
             <AnimatePresence>

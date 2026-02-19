@@ -34,13 +34,11 @@ export default function Navbar() {
     >
       <div className="max-w-content mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo — Logo.svg has dark text, designed for the light nav */}
-          <a href="#" className="flex items-center shrink-0">
-            <img
-              src="/Logo.svg"
-              alt="NeuroDetect"
-              className="h-8 w-auto"
-            />
+          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            <img src="/Logo.svg" alt="" aria-hidden="true" className="h-8 w-auto" />
+            <span className="font-heading font-bold text-xl text-[#0D0D0D] tracking-tight leading-none">
+              NeuroDetect
+            </span>
           </a>
 
           {/* Desktop nav links */}

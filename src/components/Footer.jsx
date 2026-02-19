@@ -1,5 +1,14 @@
 import { motion } from 'framer-motion'
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.1 },
+  }),
+}
+
 const links = {
   Project: [
     { label: 'How It Works', href: '#how-it-works' },
@@ -20,20 +29,26 @@ const links = {
 export default function Footer() {
   return (
     <footer className="relative bg-[#080C0E] border-t border-[rgba(232,242,246,0.06)]">
-      {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cta/20 to-transparent" />
 
       <div className="max-w-content mx-auto px-6 lg:px-8 pt-16 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
+
+        {/* Columns stagger left → right */}
+        <motion.div
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12"
+        >
           {/* Brand column */}
-          <div>
+          <motion.div variants={fadeUp}>
             <a href="#" className="inline-flex mb-5">
-              <div className="bg-nav rounded-lg px-3 py-2">
-                <img
-                  src="/Logo.svg"
-                  alt="NeuroDetect"
-                  className="h-6 w-auto"
-                />
+              <div className="bg-nav rounded-lg px-3 py-2 flex items-center gap-2">
+                <img src="/Logo.svg" alt="" aria-hidden="true" className="h-6 w-auto" />
+                <span className="font-heading font-bold text-lg text-[#0D0D0D] tracking-tight leading-none">
+                  NeuroDetect
+                </span>
               </div>
             </a>
             <p className="text-sm text-text-muted leading-relaxed max-w-[260px]">
@@ -55,11 +70,11 @@ export default function Footer() {
                 Try Demo
               </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Link columns */}
           {Object.entries(links).map(([heading, items]) => (
-            <div key={heading}>
+            <motion.div key={heading} variants={fadeUp}>
               <h4 className="text-xs font-bold uppercase tracking-[0.12em] text-theme mb-4">{heading}</h4>
               <ul className="space-y-2.5">
                 {items.map(({ label, href, external }) => (
@@ -80,19 +95,25 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[rgba(232,242,246,0.06)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="border-t border-[rgba(232,242,246,0.06)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
           <p className="text-xs text-text-muted opacity-50">
             © {new Date().getFullYear()} NeuroDetect — Imperial College London. Academic project.
           </p>
           <p className="text-xs text-text-muted opacity-40 text-center sm:text-right max-w-xs">
             Not a medical device. Results should always be reviewed by a qualified clinician.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )
