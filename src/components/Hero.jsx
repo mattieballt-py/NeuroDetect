@@ -85,7 +85,7 @@ export default function Hero() {
             >
               What if AI could
               <br />
-              <span className="text-cta italic">help?</span>
+              <span className="text-cta italic">save lives?</span>
             </motion.h1>
 
             <motion.p
@@ -93,7 +93,7 @@ export default function Hero() {
               custom={0.72}
               className="hidden md:block font-sans text-text-muted text-base lg:text-lg max-w-sm mb-8 leading-relaxed"
             >
-              NeuroDetect uses explainable AI to flag high-risk brain MRI scans — showing radiologists exactly where to look.
+              NeuroDetect uses explainable AI to flag high-risk brain MRI scans, showing radiologists exactly where to look.
             </motion.p>
 
             <motion.a
@@ -123,7 +123,7 @@ export default function Hero() {
           {/* Image 1 — Grad-CAM detection (shown first) */}
           <motion.div style={{ opacity: img1Opacity }} className="absolute inset-0">
             <img
-              src="/mri-detected.jpg"
+              src="/before.jpg"
               alt="Selection of brain MRI scans with Grad-CAM overlay"
               className="w-full h-full object-contain"
             />
@@ -137,7 +137,7 @@ export default function Hero() {
                 background: 'radial-gradient(ellipse 70% 50% at 60% 50%, rgba(231,30,34,0.06) 0%, transparent 70%)',
               }}
             />
-            <img src="/mri-plain.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
+            <img src="/after.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
             <motion.div
               style={{ opacity: img2Opacity }}
               className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"

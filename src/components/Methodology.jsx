@@ -59,7 +59,7 @@ function CNNPanel() {
     }}>
       <div style={{ height: 3, background: 'linear-gradient(to right, rgba(232,242,246,0.15), rgba(232,242,246,0.45))' }} />
       <div style={{ padding: '14px 10px 8px', height: 216, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <svg width="190" height="188" viewBox="0 0 190 188">
+        <svg width="205" height="188" viewBox="0 0 205 188">
           {/* Input block */}
           <rect x="2" y="24" width="24" height="120" rx="3" fill="rgba(41,55,63,0.85)" stroke="rgba(232,242,246,0.14)" strokeWidth="1"/>
           {[38,53,68,83,98,113,128].map(y => <line key={y} x1="2" y1={y} x2="26" y2={y} stroke="rgba(232,242,246,0.06)" strokeWidth="0.5"/>)}
@@ -118,9 +118,7 @@ function CNNPanel() {
           ))}
         </svg>
       </div>
-      <div style={{ padding: '6px 13px 10px', borderTop: '1px solid rgba(232,242,246,0.05)' }}>
-        <span style={{ fontSize: 9, color: 'rgba(143,163,172,0.45)', fontFamily: 'monospace' }}>Conv → Pool → FC → Softmax</span>
-      </div>
+      
     </div>
   )
 }

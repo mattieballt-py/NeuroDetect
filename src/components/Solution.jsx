@@ -185,7 +185,7 @@ export default function Solution() {
             viewport={{ once: true, margin: '-60px' }}
             className="text-text-muted text-lg max-w-xl mx-auto"
           >
-            AI you can trust — because it shows its work.
+            AI you can trust because it shows its work.
           </motion.p>
         </div>
 

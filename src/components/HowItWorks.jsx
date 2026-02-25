@@ -54,8 +54,8 @@ const cards = [
     visual: (
       <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#111]">
         <img
-          src="/brains.gif"
-          alt="Animated Grad-CAM heatmap visualisation across brain scans"
+          src="/brain.jpg"
+          alt="Grad-CAM heatmap visualisation across brain scans"
           className="w-full h-auto object-contain"
         />
         <div className="px-3 py-2 border-t border-[rgba(232,242,246,0.06)] flex items-center gap-2">
@@ -71,7 +71,7 @@ const cards = [
     title: 'Occlusion Verification',
     summary: "Double-check the AI's reasoning",
     expanded:
-      "We hide the highlighted region and re-run the analysis. If the AI's confidence drops significantly, we know it was looking at the right place — not just pattern-matching on noise.",
+      "We mask the top-activated Grad-CAM region and see if the model's confidence drops more than when masking a random region of the same size. If so, we know it was looking at the right place: not just pattern-matching on noise.",
     visual: (
       <div className="mt-5 rounded-xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.3)] p-4 space-y-3">
         <div className="flex items-center justify-between text-xs text-text-muted">
@@ -112,7 +112,7 @@ const cards = [
     title: 'Similar Case Retrieval',
     summary: 'Learn from past examples',
     expanded:
-      'The system surfaces similar verified scans from its database — giving clinicians visual precedent. If this scan looks like four other confirmed cases, confidence in the result increases.',
+      'Nearest-neighbour scans from the training set are retrieved using CNN embeddings, giving clinicians visual precedent. If this scan looks like four other confirmed cases, confidence in the result increases.',
     visual: (
       <div className="mt-5">
         <div className="text-xs text-text-muted mb-3 font-medium">Top 3 similar verified cases:</div>
