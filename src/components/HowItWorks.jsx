@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import GradCAMScale from './GradCAMScale'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -61,6 +62,9 @@ const cards = [
         <div className="px-3 py-2 border-t border-[rgba(232,242,246,0.06)] flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse shrink-0" />
           <span className="text-[10px] font-sans text-text-muted opacity-70">Live Grad-CAM visualisation — areas the AI weighted most heavily</span>
+        </div>
+        <div className="px-3 pb-3">
+          <GradCAMScale />
         </div>
       </div>
     ),

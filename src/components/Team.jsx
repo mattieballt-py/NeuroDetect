@@ -48,41 +48,13 @@ const expertise = [
 ]
 
 const members = [
-  {
-    name: 'Mattie Ball',
-    degree: 'Mechanical Engineering',
-    photo: '/team/Mattie.jpg',
-  },
-  {
-    name: 'Jeremy Tan',
-    degree: 'Mechanical Engineering',
-    photo: '/team/Jeremy.jpg',
-  },
-  {
-    name: 'Nana',
-    degree: 'Mechanical Engineering',
-    photo: '/team/PHOTO-2026-02-19-13-46-26.jpg',
-  },
-  {
-    name: 'Team Member',
-    degree: 'Mechanical Engineering',
-    photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
-  {
-    name: 'Team Member',
-    degree: 'Mechanical Engineering',
-    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
-  {
-    name: 'Team Member',
-    degree: 'Mechanical Engineering',
-    photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
-  {
-    name: 'Team Member',
-    degree: 'Mechanical Engineering',
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format',
-  },
+  { name: 'Mattie Ball',        degree: 'Mechanical Engineering', photo: '/team/Mattie%20Ball.jpg' },
+  { name: 'Jeremy',             degree: 'Mechanical Engineering', photo: '/team/Jeremy.jpg' },
+  { name: 'Nana',               degree: 'Mechanical Engineering', photo: '/team/Nana%20.jpg' },
+  { name: 'Prithvi Philip',     degree: 'Mechanical Engineering', photo: '/team/Prithvi%20Philip.jpg' },
+  { name: 'Aasiyah Alloo',      degree: 'Mechanical Engineering', photo: '/team/aasiyah%20alloo.jpg' },
+  { name: 'Joshua Tianle Meng', degree: 'Mechanical Engineering', photo: '/team/joshua%20tianle%20meng.jpg' },
+  { name: 'Will',               degree: 'Mechanical Engineering', photo: null },
 ]
 
 export default function Team() {
@@ -131,7 +103,7 @@ export default function Team() {
             viewport={{ once: true, margin: '-60px' }}
             className="text-text-muted text-base leading-relaxed mb-10"
           >
-            A multidisciplinary team of Mechanical Engineering students combining deep technical expertise with a genuine desire to improve diagnostic outcomes.
+            A multidisciplinary team of Engineering students combining what we learnt from the Demystifying ML course with a genuine desire to improve diagnostic outcomes, and save lives.
           </motion.p>
 
           
@@ -152,13 +124,22 @@ export default function Team() {
               className="w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] flex flex-col items-center gap-3"
             >
               <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(232,242,246,0.08)]">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                  style={{ filter: 'grayscale(100%) contrast(1.05)' }}
-                  loading="lazy"
-                />
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    style={{ filter: 'grayscale(100%) contrast(1.05)' }}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-surface/30 flex items-center justify-center">
+                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" className="opacity-15">
+                      <circle cx="26" cy="19" r="11" stroke="currentColor" strokeWidth="2" />
+                      <path d="M4 48c0-12 10-20 22-20s22 8 22 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                )}
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-theme leading-tight">{member.name}</div>

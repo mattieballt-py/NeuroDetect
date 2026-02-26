@@ -149,12 +149,22 @@ function GradCAMPanel() {
             background: 'radial-gradient(ellipse 42% 38% at 56% 40%, rgba(231,30,34,0.82) 0%, rgba(255,120,30,0.5) 35%, rgba(255,200,50,0.2) 60%, transparent 80%)',
           }} />
         </div>
-        <div style={{ position: 'absolute', bottom: 8, right: 10, display: 'flex', gap: 2, alignItems: 'center' }}>
-          <span style={{ fontSize: 8, color: 'rgba(232,242,246,0.3)', marginRight: 3 }}>low</span>
-          {['#4ade80','#facc15','#f97316','#ef4444','#dc2626'].map(c => (
-            <div key={c} style={{ width: 10, height: 6, background: c, borderRadius: 1 }} />
-          ))}
-          <span style={{ fontSize: 8, color: 'rgba(232,242,246,0.3)', marginLeft: 3 }}>high</span>
+        <div style={{ position: 'absolute', bottom: 8, right: 10, display: 'flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ fontSize: 7, color: 'rgba(232,242,246,0.3)', fontFamily: 'monospace' }}>low</span>
+          <svg width="52" height="8" viewBox="0 0 52 8" style={{ display: 'block' }}>
+            <defs>
+              <linearGradient id="gcam-mini-panel" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stopColor="#00007F" />
+                <stop offset="11%"  stopColor="#0000FF" />
+                <stop offset="37%"  stopColor="#00FFFF" />
+                <stop offset="62%"  stopColor="#FFFF00" />
+                <stop offset="88%"  stopColor="#FF0000" />
+                <stop offset="100%" stopColor="#7F0000" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="52" height="8" rx="1.5" fill="url(#gcam-mini-panel)" opacity="0.85" />
+          </svg>
+          <span style={{ fontSize: 7, color: 'rgba(232,242,246,0.3)', fontFamily: 'monospace' }}>high</span>
         </div>
         <span style={{ position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace', color: 'rgba(232,242,246,0.28)' }}>Grad-CAM</span>
       </div>

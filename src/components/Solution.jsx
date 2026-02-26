@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import GradCAMScale from './GradCAMScale'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -124,25 +125,26 @@ const steps = [
         <div>
           <div className="flex justify-between text-xs text-text-muted mb-1.5">
             <span>Confidence</span>
-            <span className="text-theme font-semibold">92%</span>
+            <span className="text-theme font-semibold">99%</span>
           </div>
           <div className="h-2 rounded-full bg-surface/60">
             <motion.div
               className="h-full bg-gradient-to-r from-cta to-[#ff6b6b] rounded-full"
               initial={{ width: '0%' }}
-              whileInView={{ width: '92%' }}
+              whileInView={{ width: '99%' }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: 'easeOut', delay: 0.6 }}
             />
           </div>
         </div>
-        <div className="flex gap-2 mt-1">
-          {['Similar case 1', 'Similar case 2', 'Similar case 3'].map((c) => (
-            <div key={c} className="flex-1 aspect-square rounded-lg bg-surface/50 border border-[rgba(232,242,246,0.06)] flex items-center justify-center">
-              <span className="text-[9px] text-text-muted opacity-50 text-center leading-tight px-1">{c}</span>
-            </div>
-          ))}
+        <div className="rounded-lg overflow-hidden">
+          <img
+            src="/results/glioma_mc99_m36.jpg"
+            alt="Glioma Grad-CAM result"
+            className="w-full object-cover"
+          />
         </div>
+        <GradCAMScale />
       </div>
     ),
   },
