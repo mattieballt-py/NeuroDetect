@@ -49,12 +49,12 @@ const expertise = [
 
 const members = [
   { name: 'Mattie Ball',        degree: 'Mechanical Engineering', photo: '/team/Mattie%20Ball.jpg' },
-  { name: 'Jeremy',             degree: 'Mechanical Engineering', photo: '/team/Jeremy.jpg' },
-  { name: 'Nana',               degree: 'Mechanical Engineering', photo: '/team/Nana%20.jpg' },
+  { name: 'Jeremy Tan',             degree: 'Electrical and Electronic Engineering', photo: '/team/Jeremy.jpg' },
+  { name: 'Nana Vanichayangkuranont',               degree: 'Biomedical Engineering', photo: '/team/Nana%20.jpg' },
   { name: 'Prithvi Philip',     degree: 'Mechanical Engineering', photo: '/team/Prithvi%20Philip.jpg' },
   { name: 'Aasiyah Alloo',      degree: 'Mechanical Engineering', photo: '/team/aasiyah%20alloo.jpg' },
-  { name: 'Joshua Tianle Meng', degree: 'Mechanical Engineering', photo: '/team/joshua%20tianle%20meng.jpg' },
-  { name: 'Will',               degree: 'Mechanical Engineering', photo: null },
+  { name: 'Joshua Tianle Meng', degree: 'Aerospace Engineering', photo: '/team/joshua%20tianle%20meng.jpg' },
+  { name: 'Will',               degree: 'Computer Science', photo: '/team/will.jpg' },
 ]
 
 export default function Team() {
