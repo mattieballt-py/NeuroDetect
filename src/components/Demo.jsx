@@ -270,8 +270,8 @@ export default function Demo() {
                           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.35 }}
                         />
                       </div>
-                      <p className="text-[10px] text-text-muted opacity-50">
-                        {activeCase.confidence - activeCase.maskedConfidence}% drop confirms the highlighted region was critical to the diagnosis
+                      <p className="text-[10px] text-text-muted opacity-50 leading-relaxed">
+                        A {activeCase.confidence - activeCase.maskedConfidence}% confidence drop when this region is hidden tells us the AI was heavily relying on it to classify this as {activeCase.label} — making it the essential area for clinical review.
                       </p>
                     </div>
                   </div>

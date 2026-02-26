@@ -7,6 +7,7 @@ import Impact from './components/Impact'
 import Demo from './components/Demo'
 import Methodology from './components/Methodology'
 import Team from './components/Team'
+import ModelExplainer from './components/ModelExplainer'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -23,6 +24,7 @@ export default function App() {
         <Impact />
         <Demo />
         <Methodology />
+        <ModelExplainer />
         <Team />
         <FAQ />
         <Contact />
