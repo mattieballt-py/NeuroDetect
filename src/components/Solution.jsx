@@ -77,7 +77,6 @@ const steps = [
     body: 'The neural network scans every region, generating a heatmap showing exactly which areas influenced its decision.',
     badge: 'AI ANALYSIS',
     badgeColor: 'bg-[rgba(231,30,34,0.12)] text-cta',
-    callout: 'Not a black box — you can see exactly what the AI is looking at',
     visual: (
       <div className="w-full rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#1a1a1a] relative">
         <div className="aspect-[4/3] relative flex items-center justify-center">

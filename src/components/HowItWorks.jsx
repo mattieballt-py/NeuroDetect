@@ -117,15 +117,10 @@ const cards = [
       <div className="mt-5">
         <div className="text-xs text-text-muted mb-3 font-medium">Top 3 similar verified cases:</div>
         <div className="grid grid-cols-3 gap-2">
-          {[
-            { match: '96% match', label: 'Confirmed' },
-            { match: '91% match', label: 'Confirmed' },
-            { match: '88% match', label: 'Confirmed' },
-          ].map(({ match, label }) => (
-            <div key={match} className="aspect-square rounded-lg bg-[rgba(41,55,63,0.5)] border border-[rgba(232,242,246,0.07)] flex flex-col items-center justify-center gap-1 p-2">
-              <div style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(231,30,34,0.3) 0%, rgba(41,55,63,0.4) 60%)' }} className="w-full h-2/3 rounded-md" />
-              <span className="text-[9px] text-[#4ade80] font-semibold">{match}</span>
-              <span className="text-[9px] text-text-muted opacity-50">{label}</span>
+          {['/brain1.jpg', '/brain2.jpg', '/brain3.jpg'].map((src) => (
+            <div key={src} className="aspect-square rounded-lg bg-[rgba(41,55,63,0.5)] border border-[rgba(232,242,246,0.07)] overflow-hidden flex flex-col">
+              <img src={src} alt="Glioma case" className="w-full flex-1 object-cover min-h-0" />
+              <span className="text-[9px] text-text-muted opacity-50 text-center py-1 shrink-0">Glioma</span>
             </div>
           ))}
         </div>

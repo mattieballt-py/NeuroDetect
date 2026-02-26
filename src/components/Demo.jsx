@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const fadeUp = {
@@ -10,31 +10,50 @@ const fadeUp = {
   }),
 }
 
-const SAMPLE_RESULTS = [
+const CASES = [
   {
-    label: 'Sample A — Glioma',
+    id: 'glioma',
+    label: 'Glioma',
+    plain: '/results/glioma_c99_m_36.jpg',
+    result: '/results/glioma_mc99_m36.jpg',
+    confidence: 99,
+    maskedConfidence: 36,
     verdict: 'Tumour Detected',
-    confidence: 94,
-    region: 'Right temporal lobe',
     isPositive: true,
   },
   {
-    label: 'Sample B — Meningioma',
+    id: 'menig',
+    label: 'Meningioma',
+    plain: '/results/menig_c99_m_30.jpg',
+    result: '/results/menig_mc99_m_30.jpg',
+    confidence: 99,
+    maskedConfidence: 30,
     verdict: 'Tumour Detected',
-    confidence: 88,
-    region: 'Frontal lobe, superior',
     isPositive: true,
   },
   {
-    label: 'Sample C — No Tumour',
+    id: 'pituitary',
+    label: 'Pituitary',
+    plain: '/results/pituitary_c99_m25.jpg',
+    result: '/results/pituitary_mc99_m25.jpg',
+    confidence: 99,
+    maskedConfidence: 25,
+    verdict: 'Tumour Detected',
+    isPositive: true,
+  },
+  {
+    id: 'notum',
+    label: 'No Tumour',
+    plain: '/results/notum_c99_m24.jpg',
+    result: '/results/notum_mc99_m24.jpg',
+    confidence: 99,
+    maskedConfidence: 24,
     verdict: 'No Abnormality',
-    confidence: 97,
-    region: 'No region of concern',
     isPositive: false,
   },
 ]
 
-function ResultCard({ result, visible }) {
+function ResultCard({ cas, visible }) {
   return (
     <AnimatePresence>
       {visible && (
@@ -47,68 +66,61 @@ function ResultCard({ result, visible }) {
         >
           {/* Header */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-text-muted">{result.label}</span>
-            <span
-              className={`text-xs font-bold px-3 py-1 rounded-full ${
-                result.isPositive
-                  ? 'bg-[rgba(231,30,34,0.12)] text-cta'
-                  : 'bg-[rgba(74,222,128,0.12)] text-[#4ade80]'
-              }`}
-            >
-              {result.verdict}
+            <span className="text-sm font-medium text-text-muted">{cas.label}</span>
+            <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+              cas.isPositive
+                ? 'bg-[rgba(231,30,34,0.12)] text-cta'
+                : 'bg-[rgba(74,222,128,0.12)] text-[#4ade80]'
+            }`}>
+              {cas.verdict}
             </span>
           </div>
 
-          {/* Simulated scan + heatmap side by side */}
+          {/* Images side by side */}
           <div className="grid grid-cols-2 gap-3">
-            <div
-              className="aspect-square rounded-xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #1a2a30, #0d1a20)' }}
-            >
-              <svg width="60" height="70" viewBox="0 0 60 70" fill="none" className="opacity-50">
-                <ellipse cx="30" cy="35" rx="25" ry="30" stroke="rgba(232,242,246,0.3)" strokeWidth="1.5" />
-                <ellipse cx="30" cy="35" rx="15" ry="20" stroke="rgba(232,242,246,0.2)" strokeWidth="1" />
-                <circle cx="30" cy="35" r="5" fill="rgba(232,242,246,0.05)" />
-              </svg>
+            <div>
+              <div className="text-[10px] text-text-muted opacity-50 mb-1.5 text-center">Original Scan</div>
+              <img src={cas.plain} alt="Original scan" className="w-full rounded-xl object-cover aspect-square" />
             </div>
-            <div
-              className="aspect-square rounded-xl flex items-center justify-center relative overflow-hidden"
-              style={{
-                background: result.isPositive
-                  ? 'radial-gradient(ellipse at 60% 40%, rgba(231,30,34,0.5) 0%, rgba(255,120,30,0.2) 30%, #0d1a20 70%)'
-                  : 'radial-gradient(ellipse at 50% 50%, rgba(74,222,128,0.1) 0%, #0d1a20 60%)',
-              }}
-            >
-              <svg width="60" height="70" viewBox="0 0 60 70" fill="none" className="opacity-50">
-                <ellipse cx="30" cy="35" rx="25" ry="30" stroke="rgba(232,242,246,0.2)" strokeWidth="1.5" />
-                {result.isPositive && (
-                  <circle cx="36" cy="28" r="9" fill="rgba(231,30,34,0.3)" stroke="rgba(231,30,34,0.6)" strokeWidth="1" />
-                )}
-              </svg>
-              <div className="absolute bottom-2 right-2 text-[9px] font-medium text-cta">AI overlay</div>
+            <div>
+              <div className="text-[10px] text-text-muted opacity-50 mb-1.5 text-center">Grad-CAM Result</div>
+              <img src={cas.result} alt="Grad-CAM result" className="w-full rounded-xl object-cover aspect-square" />
             </div>
           </div>
 
-          {/* Confidence bar */}
+          {/* Confidence */}
           <div>
             <div className="flex justify-between text-xs text-text-muted mb-1.5">
               <span>Model confidence</span>
-              <span className="font-semibold text-theme">{result.confidence}%</span>
+              <span className="font-semibold text-theme">{cas.confidence}%</span>
             </div>
             <div className="h-2 rounded-full bg-surface/60">
               <motion.div
-                className={`h-full rounded-full ${result.isPositive ? 'bg-gradient-to-r from-cta to-[#ff6b6b]' : 'bg-[#4ade80]'}`}
+                className={`h-full rounded-full ${cas.isPositive ? 'bg-gradient-to-r from-cta to-[#ff6b6b]' : 'bg-[#4ade80]'}`}
                 initial={{ width: '0%' }}
-                animate={{ width: `${result.confidence}%` }}
+                animate={{ width: `${cas.confidence}%` }}
                 transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
               />
             </div>
           </div>
 
-          {/* Region */}
-          <div className="flex items-center gap-2 text-xs text-text-muted">
-            <span className="w-1.5 h-1.5 rounded-full bg-text-muted/40" />
-            <span>Region of concern: <span className="text-theme font-medium">{result.region}</span></span>
+          {/* Masked confidence */}
+          <div className="rounded-xl border border-[rgba(232,242,246,0.06)] bg-surface/20 px-4 py-3 space-y-2">
+            <div className="flex items-center justify-between text-xs text-text-muted">
+              <span>After masking active region</span>
+              <span className="text-cta font-semibold">{cas.maskedConfidence}%</span>
+            </div>
+            <div className="h-1.5 rounded-full bg-surface/60">
+              <motion.div
+                className="h-full bg-cta/60 rounded-full"
+                initial={{ width: '0%' }}
+                animate={{ width: `${cas.maskedConfidence}%` }}
+                transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
+              />
+            </div>
+            <p className="text-[10px] text-text-muted opacity-50">
+              {cas.confidence - cas.maskedConfidence}% drop confirms the highlighted region was critical to the diagnosis
+            </p>
           </div>
         </motion.div>
       )}
@@ -117,27 +129,23 @@ function ResultCard({ result, visible }) {
 }
 
 export default function Demo() {
-  const [phase, setPhase] = useState('idle') // idle | uploading | analysing | done
-  const [selectedSample, setSelectedSample] = useState(null)
-  const [activeResult, setActiveResult] = useState(null)
-  const fileRef = useRef(null)
+  const [phase, setPhase] = useState('idle') // idle | analysing | done
+  const [selectedIdx, setSelectedIdx] = useState(null)
+  const [activeCase, setActiveCase] = useState(null)
 
-  const runDemo = async (resultIndex) => {
-    setPhase('uploading')
-    setActiveResult(null)
-
-    await new Promise((r) => setTimeout(r, 1000))
+  const runDemo = async (idx) => {
     setPhase('analysing')
+    setActiveCase(null)
 
-    await new Promise((r) => setTimeout(r, 1800))
+    await new Promise((r) => setTimeout(r, 2000))
     setPhase('done')
-    setActiveResult(SAMPLE_RESULTS[resultIndex])
+    setActiveCase(CASES[idx])
   }
 
   const reset = () => {
     setPhase('idle')
-    setActiveResult(null)
-    setSelectedSample(null)
+    setActiveCase(null)
+    setSelectedIdx(null)
   }
 
   return (
@@ -183,127 +191,101 @@ export default function Demo() {
           viewport={{ once: true, margin: '-60px' }}
           className="max-w-2xl mx-auto"
         >
-          {/* Upload / Sample selector */}
           <div className="glass-card gradient-border rounded-2xl p-8">
 
-            {/* Sample buttons — stagger in left to right */}
+            {/* Case selector */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } } }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }}
               className="mb-6"
             >
               <motion.p
                 variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.4 } } }}
                 className="text-sm font-medium text-text-muted mb-4"
               >
-                Choose a sample scan to analyse:
+                Choose a scan to analyse:
               </motion.p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {SAMPLE_RESULTS.map((sample, i) => (
+              <div className="grid grid-cols-2 gap-3">
+                {CASES.map((cas, i) => (
                   <motion.button
-                    key={sample.label}
+                    key={cas.id}
                     variants={{
                       hidden: { opacity: 0, y: 12 },
                       visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] } },
                     }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => { setSelectedSample(i); reset(); }}
-                    disabled={phase === 'uploading' || phase === 'analysing'}
-                    className={`p-3 rounded-xl border text-left transition-all duration-200 text-sm ${
-                      selectedSample === i
-                        ? 'border-cta/50 bg-[rgba(231,30,34,0.08)] text-theme'
-                        : 'border-[rgba(232,242,246,0.08)] bg-surface/20 text-text-muted hover:border-[rgba(232,242,246,0.18)] hover:text-theme'
-                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                    onClick={() => {
+                      setSelectedIdx(i)
+                      setPhase('idle')
+                      setActiveCase(null)
+                    }}
+                    disabled={phase === 'analysing'}
+                    className={`rounded-xl border overflow-hidden text-left transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
+                      selectedIdx === i
+                        ? 'border-cta/50 ring-1 ring-cta/20'
+                        : 'border-[rgba(232,242,246,0.08)] hover:border-[rgba(232,242,246,0.2)]'
+                    }`}
                   >
-                    <div className="font-medium text-xs mb-1 text-theme opacity-70 flex items-center gap-1.5">
-                      <span className={`w-2 h-2 rounded-full shrink-0 ${sample.isPositive ? 'bg-cta' : 'bg-[#4ade80]'}`} />
-                      {sample.label.split(' — ')[1]}
+                    <div className="relative">
+                      <img src={cas.plain} alt={cas.label} className="w-full aspect-square object-cover" />
+                      {selectedIdx === i && (
+                        <div className="absolute inset-0 bg-cta/10" />
+                      )}
                     </div>
-                    <div className="text-[10px] opacity-60">{sample.label.split(' — ')[0]}</div>
+                    <div className={`px-3 py-2 flex items-center justify-between transition-colors duration-200 ${
+                      selectedIdx === i ? 'bg-[rgba(231,30,34,0.08)]' : 'bg-surface/20'
+                    }`}>
+                      <span className="text-xs font-medium text-theme">{cas.label}</span>
+                      <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${
+                        cas.isPositive
+                          ? 'bg-[rgba(231,30,34,0.15)] text-cta'
+                          : 'bg-[rgba(74,222,128,0.15)] text-[#4ade80]'
+                      }`}>
+                        {cas.isPositive ? 'Tumour' : 'Clear'}
+                      </span>
+                    </div>
                   </motion.button>
                 ))}
               </div>
             </motion.div>
 
-            {/* Divider */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="flex-1 h-px bg-[rgba(232,242,246,0.06)]" />
-              <span className="text-xs text-text-muted opacity-50">or</span>
-              <div className="flex-1 h-px bg-[rgba(232,242,246,0.06)]" />
-            </motion.div>
-
-            {/* File upload zone — appears after buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 }}
-              onClick={() => fileRef.current?.click()}
-              className="border-2 border-dashed border-[rgba(232,242,246,0.1)] hover:border-[rgba(232,242,246,0.2)] rounded-xl p-6 flex flex-col items-center gap-2 cursor-pointer transition-colors duration-200 mb-6"
-            >
-              <input ref={fileRef} type="file" accept="image/*,.dcm" className="hidden" />
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="text-text-muted opacity-50">
-                <path d="M14 4v14M14 4L9 9M14 4l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M4 20v2a2 2 0 002 2h16a2 2 0 002-2v-2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-              </svg>
-              <span className="text-sm text-text-muted opacity-60">Upload your own MRI scan</span>
-              <span className="text-xs text-text-muted opacity-40">JPEG, PNG, DICOM — max 20 MB</span>
-            </motion.div>
-
-            {/* Run button — appears last, drawing the eye down */}
+            {/* Run button */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.75 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.5 }}
             >
               <motion.button
-                whileHover={{ scale: selectedSample === null ? 1 : 1.02 }}
-                whileTap={{ scale: selectedSample === null ? 1 : 0.97 }}
-                onClick={() => selectedSample !== null && runDemo(selectedSample)}
-                disabled={selectedSample === null || phase === 'uploading' || phase === 'analysing'}
+                whileHover={{ scale: selectedIdx === null ? 1 : 1.02 }}
+                whileTap={{ scale: selectedIdx === null ? 1 : 0.97 }}
+                onClick={() => selectedIdx !== null && runDemo(selectedIdx)}
+                disabled={selectedIdx === null || phase === 'analysing'}
                 className={`w-full py-3.5 rounded-full font-semibold text-base transition-all duration-200 flex items-center justify-center gap-3 ${
-                  selectedSample === null || phase === 'uploading' || phase === 'analysing'
+                  selectedIdx === null || phase === 'analysing'
                     ? 'bg-surface/40 text-text-muted cursor-not-allowed'
                     : 'bg-cta text-white glow-cta hover:glow-cta-hover hover:bg-cta-hover'
                 }`}
               >
-                {phase === 'uploading' && (
+                {phase === 'analysing' ? (
                   <>
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
-                      className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                    />
-                    Uploading scan…
-                  </>
-                )}
-                {phase === 'analysing' && (
-                  <>
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}
+                      transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
                       className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
                     />
                     Analysing with AI…
                   </>
-                )}
-                {(phase === 'idle' || phase === 'done') && 'Run Analysis →'}
+                ) : 'Run Analysis →'}
               </motion.button>
             </motion.div>
 
             {/* Progress bar */}
             <AnimatePresence>
-              {(phase === 'uploading' || phase === 'analysing') && (
+              {phase === 'analysing' && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
@@ -314,13 +296,13 @@ export default function Demo() {
                     <motion.div
                       className="h-full bg-gradient-to-r from-cta to-[#ff6b6b] rounded-full"
                       initial={{ width: '0%' }}
-                      animate={{ width: phase === 'uploading' ? '35%' : '85%' }}
-                      transition={{ duration: phase === 'uploading' ? 0.9 : 1.6, ease: 'easeInOut' }}
+                      animate={{ width: '85%' }}
+                      transition={{ duration: 1.8, ease: 'easeInOut' }}
                     />
                   </div>
                   <div className="flex justify-between text-xs text-text-muted opacity-50 mt-1.5">
-                    <span>{phase === 'uploading' ? 'Uploading & validating…' : 'Running neural network analysis…'}</span>
-                    <span>{phase === 'uploading' ? '35%' : '85%'}</span>
+                    <span>Running neural network analysis…</span>
+                    <span>85%</span>
                   </div>
                 </motion.div>
               )}
@@ -329,7 +311,7 @@ export default function Demo() {
 
           {/* Result */}
           <div className="mt-5">
-            <ResultCard result={activeResult} visible={phase === 'done' && !!activeResult} />
+            <ResultCard cas={activeCase} visible={phase === 'done' && !!activeCase} />
           </div>
 
           {phase === 'done' && (
