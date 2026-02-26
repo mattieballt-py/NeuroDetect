@@ -13,19 +13,19 @@ const fadeUp = {
 const items = [
   {
     q: 'What is a CNN?',
-    a: 'A Convolutional Neural Network (CNN) is a type of artificial intelligence modelled loosely on how the human visual system works. Rather than analysing an image all at once, it processes it through a series of layers — each responsible for extracting increasingly complex information. Early layers detect simple patterns like edges and contrasts; deeper layers combine these into shapes and textures. At the end, a classifier maps the compressed visual information to one of the output categories. The model learns by seeing thousands of labelled MRI scans and making small adjustments each time it gets a prediction wrong.',
+    a: 'A Convolutional Neural Network (CNN) is a type of artificial intelligence modelled loosely on how the human visual system works. Rather than analysing an image all at once, it processes it through a series of layers, each responsible for extracting increasingly complex information. Early layers detect simple patterns like edges and contrasts; deeper layers combine these into shapes and textures. At the end, a classifier maps the compressed visual information to one of the output categories. The model learns by seeing thousands of labelled MRI scans and making small adjustments each time it gets a prediction wrong.',
   },
   {
     q: 'Image Input',
-    a: 'Users upload a brain MRI scan image, which is standardised — resized and normalised — before analysis. This ensures consistent, reliable predictions regardless of the original scan resolution or brightness.',
+    a: 'Users upload a brain MRI scan image, which is standardised, resised and normalised, before analysis. This ensures consistent, reliable predictions regardless of the original scan resolution or brightness.',
   },
   {
     q: 'Feature Learning (ResNet-50)',
-    a: 'The model passes the image through multiple convolutional blocks to learn important visual patterns — texture, shape, and region-specific abnormalities. NeuroDetect uses ResNet-50, a 50-layer network pretrained on millions of images and fine-tuned specifically on brain MRI data. Its residual connections allow it to learn deeply without losing earlier feature information.',
+    a: 'The model passes the image through multiple convolutional blocks to learn important visual patterns: texture, shape, and region-specific abnormalities. NeuroDetect uses ResNet-50, a 50-layer network pretrained on millions of images and fine-tuned specifically on brain MRI data. Its residual connections allow it to learn deeply without losing earlier feature information.',
   },
   {
     q: 'Prediction',
-    a: 'Learned features are passed to a final classification layer that outputs a predicted class (Glioma, Meningioma, Pituitary tumour, or No Tumour) and a confidence score. To improve transparency, we display Grad-CAM — showing where in the scan the model was looking — and run occlusion sensitivity testing to confirm that those regions genuinely drove the prediction, not noise.',
+    a: 'Learned features are passed to a final classification layer that outputs a predicted class (Glioma, Meningioma, Pituitary tumour, or No Tumour) and a confidence score. To improve transparency, we display Grad-CAM, showing where in the scan the model was looking, and run occlusion sensitivity testing to confirm that those regions genuinely drove the prediction, not noise.',
   },
 ]
 
