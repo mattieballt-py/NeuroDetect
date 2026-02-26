@@ -13,7 +13,7 @@ const fadeUp = {
 const faqs = [
   {
     q: 'Is NeuroDetect a replacement for radiologists?',
-    a: 'No. NeuroDetect is designed as a decision-support tool, not a replacement. It helps radiologists triage and prioritise high-risk scans faster — but every diagnosis remains the responsibility of a qualified clinician. The AI flags; the expert decides.',
+    a: 'No. NeuroDetect is designed as a decision-support tool, not a replacement. It helps radiologists triage and prioritise high-risk scans faster, but every diagnosis remains the responsibility of a qualified clinician. The AI flags; the expert decides.',
   },
   {
     q: 'What scan formats does NeuroDetect accept?',
