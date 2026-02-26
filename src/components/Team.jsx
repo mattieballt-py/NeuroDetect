@@ -54,7 +54,7 @@ const members = [
   { name: 'Prithvi Philip',     degree: 'Mechanical Engineering', photo: '/team/Prithvi%20Philip.jpg' },
   { name: 'Aasiyah Alloo',      degree: 'Mechanical Engineering', photo: '/team/aasiyah%20alloo.jpg' },
   { name: 'Joshua Tianle Meng', degree: 'Aerospace Engineering', photo: '/team/joshua%20tianle%20meng.jpg' },
-  { name: 'Will',               degree: 'Computer Science', photo: '/team/will.jpg' },
+  { name: 'Will Punter',               degree: 'Computer Science', photo: '/team/will.jpg' },
 ]
 
 export default function Team() {
