@@ -25,7 +25,7 @@ const roles = [
 ]
 
 const inputCls =
-  'w-full rounded-xl border border-[rgba(232,242,246,0.1)] bg-surface/20 px-4 py-3 text-sm text-theme placeholder:text-text-muted/50 focus:outline-none focus:border-[rgba(232,242,246,0.3)] focus:bg-surface/30 transition-all duration-200'
+  'w-full rounded-xl border border-[rgba(19,33,43,0.1)] bg-white px-4 py-3 text-sm text-theme placeholder:text-text-muted/60 focus:outline-none focus:border-[rgba(231,30,34,0.25)] focus:bg-bg transition-all duration-200 shadow-sm'
 
 export default function Contact() {
   const [fields, setFields] = useState({
@@ -64,9 +64,9 @@ export default function Contact() {
     <section
       id="contact"
       className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #0f1a20 60%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F7F9FB 0%, #EEF4F8 60%, #F7F9FB 100%)' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div
         className="absolute inset-0 pointer-events-none"
@@ -88,7 +88,7 @@ export default function Contact() {
               viewport={{ once: true, margin: '-60px' }}
               className="flex justify-center mb-5"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
                 Get In Touch
               </span>
             </motion.div>
@@ -124,7 +124,7 @@ export default function Contact() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="rounded-2xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.2)] p-8 md:p-10"
+            className="rounded-2xl border border-[rgba(19,33,43,0.08)] bg-white p-8 md:p-10 shadow-sm"
           >
             <AnimatePresence mode="wait">
               {status === 'success' ? (
@@ -135,7 +135,7 @@ export default function Contact() {
                   exit={{ opacity: 0 }}
                   className="flex flex-col items-center text-center gap-5 py-8"
                 >
-                  <div className="w-14 h-14 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.25)] flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.22)] flex items-center justify-center">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <path d="M4 12l5 5L20 7" stroke="#4ade80" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -148,7 +148,7 @@ export default function Contact() {
                   </div>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="text-xs text-text-muted hover:text-theme transition-colors border border-[rgba(232,242,246,0.1)] rounded-full px-5 py-2 hover:border-[rgba(232,242,246,0.2)]"
+                    className="text-xs text-text-muted hover:text-theme transition-colors border border-[rgba(19,33,43,0.1)] rounded-full px-5 py-2 hover:border-[rgba(19,33,43,0.2)] bg-white"
                   >
                     Send another message
                   </button>

@@ -39,8 +39,8 @@ function Item({ item, index, isOpen, onToggle }) {
       viewport={{ once: true, margin: '-40px' }}
       className={`rounded-xl border transition-colors duration-200 overflow-hidden ${
         isOpen
-          ? 'border-[rgba(232,242,246,0.15)] bg-[rgba(41,55,63,0.25)]'
-          : 'border-[rgba(232,242,246,0.07)] bg-[rgba(41,55,63,0.1)] hover:border-[rgba(232,242,246,0.12)]'
+          ? 'border-[rgba(19,33,43,0.12)] bg-white'
+          : 'border-[rgba(19,33,43,0.08)] bg-white/80 hover:border-[rgba(19,33,43,0.12)]'
       }`}
     >
       <button
@@ -70,7 +70,7 @@ function Item({ item, index, isOpen, onToggle }) {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-5 text-sm text-text-muted leading-relaxed border-t border-[rgba(232,242,246,0.06)] pt-4">
+            <p className="px-6 pb-5 text-sm text-text-muted leading-relaxed border-t border-[rgba(19,33,43,0.06)] pt-4">
               {item.a}
             </p>
           </motion.div>
@@ -87,9 +87,9 @@ export default function ModelExplainer() {
     <section
       id="model"
       className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #111820 50%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F7F9FB 0%, #EDF3F7 50%, #F7F9FB 100%)' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div className="max-w-content mx-auto">
 
@@ -102,7 +102,7 @@ export default function ModelExplainer() {
             viewport={{ once: true, margin: '-60px' }}
             className="flex justify-center mb-5"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
               Behind the Scenes
             </span>
           </motion.div>

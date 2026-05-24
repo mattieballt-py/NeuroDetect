@@ -37,12 +37,12 @@ const steps = [
     badge: 'INPUT',
     badgeColor: 'bg-surface/60 text-text-muted',
     visual: (
-      <div className="w-full rounded-xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.4)] p-5 flex flex-col gap-3">
+      <div className="w-full rounded-xl border border-[rgba(19,33,43,0.08)] bg-white p-5 flex flex-col gap-3 shadow-sm">
         <div className="flex items-center gap-3 text-text-muted text-sm">
-          <div className="w-9 h-9 rounded-lg bg-surface/80 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-lg bg-bg flex items-center justify-center border border-[rgba(19,33,43,0.08)]">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M9 3v9M9 3L5 7M9 3l4 4" stroke="#E8F2F6" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 14h12" stroke="#E8F2F6" strokeWidth="1.6" strokeLinecap="round" />
+              <path d="M9 3v9M9 3L5 7M9 3l4 4" stroke="#13212B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M3 14h12" stroke="#13212B" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </div>
           <div>
@@ -79,11 +79,11 @@ const steps = [
     badge: 'AI ANALYSIS',
     badgeColor: 'bg-[rgba(231,30,34,0.12)] text-cta',
     visual: (
-      <div className="w-full rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#1a1a1a] relative">
+        <div className="w-full rounded-xl overflow-hidden border border-[rgba(19,33,43,0.08)] bg-white relative shadow-sm">
         <div className="aspect-[4/3] relative flex items-center justify-center">
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 55% 40%, rgba(231,30,34,0.35) 0%, rgba(231,100,34,0.2) 25%, transparent 55%), linear-gradient(135deg, #1a2a30, #111)' }} />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 55% 40%, rgba(231,30,34,0.22) 0%, rgba(231,100,34,0.12) 25%, transparent 55%), linear-gradient(135deg, #F6F8FA, #E9F0F4)' }} />
           <div className="relative z-10 text-center">
-            <div className="text-xs font-mono text-text-muted opacity-60">Grad-CAM overlay</div>
+            <div className="text-xs font-mono text-text-muted opacity-75">Grad-CAM overlay</div>
           </div>
           <motion.div
             className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cta/60 to-transparent"
@@ -92,7 +92,7 @@ const steps = [
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           />
         </div>
-        <div className="p-3 flex items-center justify-between border-t border-[rgba(232,242,246,0.05)]">
+        <div className="p-3 flex items-center justify-between border-t border-[rgba(19,33,43,0.06)] bg-bg/60">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-cta rounded-full animate-pulse" />
             <span className="text-xs text-text-muted">Analysing regions…</span>
@@ -117,7 +117,7 @@ const steps = [
     badge: 'OUTPUT',
     badgeColor: 'bg-[rgba(41,200,100,0.1)] text-[#4ade80]',
     visual: (
-      <div className="w-full rounded-xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.4)] p-5 flex flex-col gap-3">
+      <div className="w-full rounded-xl border border-[rgba(19,33,43,0.08)] bg-white p-5 flex flex-col gap-3 shadow-sm">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">Result</span>
           <span className="text-xs font-bold text-cta bg-[rgba(231,30,34,0.12)] px-2.5 py-0.5 rounded-full">Tumour Detected</span>
@@ -155,15 +155,15 @@ export default function Solution() {
     <section
       id="solution"
       className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #111820 50%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F7F9FB 0%, #EDF3F7 50%, #F7F9FB 100%)' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div className="max-w-content mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex justify-center mb-5">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
               Our Solution
             </span>
           </motion.div>
@@ -196,7 +196,7 @@ export default function Solution() {
           {/* Connector line 1: step 1 → step 2 (grows on scroll) */}
           <div className="hidden lg:flex absolute top-[72px] left-[33%] right-[33%] items-center pointer-events-none">
             <motion.div
-              className="flex-1 h-px bg-gradient-to-r from-[rgba(232,242,246,0.15)] to-[rgba(231,30,34,0.3)]"
+              className="flex-1 h-px bg-gradient-to-r from-[rgba(19,33,43,0.12)] to-[rgba(231,30,34,0.3)]"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -218,7 +218,7 @@ export default function Solution() {
           {/* Connector line 2: step 2 → step 3 */}
           <div className="hidden lg:flex absolute top-[72px] items-center pointer-events-none" style={{ left: 'calc(66.66% - 16px)', right: '16.66%' }}>
             <motion.div
-              className="flex-1 h-px bg-gradient-to-r from-[rgba(231,30,34,0.3)] to-[rgba(232,242,246,0.15)]"
+              className="flex-1 h-px bg-gradient-to-r from-[rgba(231,30,34,0.3)] to-[rgba(19,33,43,0.12)]"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -233,7 +233,7 @@ export default function Solution() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 1.5 }}
             >
-              <path d="M1 1l6 5-6 5" stroke="rgba(232,242,246,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M1 1l6 5-6 5" stroke="rgba(19,33,43,0.22)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
           </div>
 
@@ -335,7 +335,7 @@ export default function Solution() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.12 }}
-                className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(232,242,246,0.07)] bg-surface/15"
+                className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(19,33,43,0.08)] bg-white/80 shadow-sm"
               >
                 <span className="shrink-0 mt-0.5 text-theme">{icon}</span>
                 <span className="text-sm text-text-muted leading-relaxed">{text}</span>

@@ -53,13 +53,13 @@ const cards = [
     expanded:
       'The AI highlights the exact regions of the scan that led to its decision — like a doctor circling areas of concern on an X-ray. Brighter regions indicate stronger influence on the result.',
     visual: (
-      <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(232,242,246,0.08)] bg-[#111]">
+      <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(19,33,43,0.08)] bg-white shadow-sm">
         <img
           src="/brain.jpg"
           alt="Grad-CAM heatmap visualisation across brain scans"
           className="w-full h-auto object-contain"
         />
-        <div className="px-3 py-2 border-t border-[rgba(232,242,246,0.06)] flex items-center gap-2">
+        <div className="px-3 py-2 border-t border-[rgba(19,33,43,0.06)] flex items-center gap-2 bg-bg/60">
           <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse shrink-0" />
           <span className="text-[10px] font-sans text-text-muted opacity-70">Live Grad-CAM visualisation — areas the AI weighted most heavily</span>
         </div>
@@ -77,7 +77,7 @@ const cards = [
     expanded:
       "We mask the top-activated Grad-CAM region and see if the model's confidence drops more than when masking a random region of the same size. If so, we know it was looking at the right place: not just pattern-matching on noise.",
     visual: (
-      <div className="mt-5 rounded-xl border border-[rgba(232,242,246,0.08)] bg-[rgba(41,55,63,0.3)] p-4 space-y-3">
+      <div className="mt-5 rounded-xl border border-[rgba(19,33,43,0.08)] bg-white p-4 space-y-3 shadow-sm">
         <div className="flex items-center justify-between text-xs text-text-muted">
           <span>With highlighted region</span>
           <span className="text-[#4ade80] font-semibold">Confidence 92%</span>
@@ -122,7 +122,7 @@ const cards = [
         <div className="text-xs text-text-muted mb-3 font-medium">Top 3 similar verified cases:</div>
         <div className="grid grid-cols-3 gap-2">
           {['/brain1.jpg', '/brain2.jpg', '/brain3.jpg'].map((src) => (
-            <div key={src} className="aspect-square rounded-lg bg-[rgba(41,55,63,0.5)] border border-[rgba(232,242,246,0.07)] overflow-hidden flex flex-col">
+            <div key={src} className="aspect-square rounded-lg bg-white border border-[rgba(19,33,43,0.08)] overflow-hidden flex flex-col shadow-sm">
               <img src={src} alt="Glioma case" className="w-full flex-1 object-cover min-h-0" />
               <span className="text-[9px] text-text-muted opacity-50 text-center py-1 shrink-0">Glioma</span>
             </div>
@@ -174,7 +174,7 @@ function Card({ card, isOpen, onToggle, index }) {
             className="overflow-hidden"
           >
             <div className="px-7 pb-7">
-              <div className="border-t border-[rgba(232,242,246,0.06)] pt-5">
+              <div className="border-t border-[rgba(19,33,43,0.06)] pt-5">
                 <p className="text-sm text-text-muted leading-relaxed mb-1">{card.expanded}</p>
                 {card.visual}
               </div>
@@ -191,12 +191,12 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className="relative bg-bg py-28 px-6">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div className="max-w-content mx-auto">
         <div className="text-center mb-14">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex justify-center mb-5">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
               The tech
             </span>
           </motion.div>

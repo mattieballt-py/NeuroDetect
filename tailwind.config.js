@@ -4,15 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0D0D0D',
-        surface: '#29373F',
-        nav: '#E8F2F6',
-        theme: '#E8F2F6',
+        bg: '#F7F9FB',
+        surface: '#E6EDF2',
+        nav: '#FFFFFF',
+        theme: '#13212B',
         cta: '#E71E22',
         'cta-hover': '#C41519',
-        'text-primary': '#E8F2F6',
-        'text-muted': '#8FA3AC',
-        'border-subtle': 'rgba(232,242,246,0.08)',
+        'text-primary': '#13212B',
+        'text-muted': '#5F7380',
+        'border-subtle': 'rgba(19,33,43,0.10)',
       },
       fontFamily: {
         heading: ['Georgia', 'serif'],

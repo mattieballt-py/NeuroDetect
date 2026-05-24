@@ -42,7 +42,7 @@ export default function Hero() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'radial-gradient(ellipse 120% 60% at -10% 50%, rgba(41,55,63,0.45) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse 120% 60% at -10% 50%, rgba(19,33,43,0.08) 0%, transparent 70%)',
             }}
           />
 
@@ -117,7 +117,7 @@ export default function Hero() {
 
           <div
             className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #0D0D0D, transparent)' }}
+            style={{ background: 'linear-gradient(to right, #F7F9FB, transparent)' }}
           />
 
           {/* Image 1 — Grad-CAM detection (shown first) */}
@@ -140,7 +140,7 @@ export default function Hero() {
             <img src="/after.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
             <motion.div
               style={{ opacity: img2Opacity }}
-              className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-black/75 backdrop-blur-sm border border-cta/40 rounded-full px-3 py-1.5"
+              className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[rgba(19,33,43,0.12)] rounded-full px-3 py-1.5 shadow-sm"
             >
               <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
               <span className="text-xs font-semibold text-text-primary font-sans">AI Analysis Active</span>

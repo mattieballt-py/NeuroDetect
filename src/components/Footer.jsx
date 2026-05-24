@@ -34,7 +34,7 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#06090B] border-t border-[rgba(232,242,246,0.06)]">
+    <footer className="relative bg-white border-t border-[rgba(19,33,43,0.08)]">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cta/20 to-transparent" />
 
       <div className="max-w-content mx-auto px-6 lg:px-8 pt-16 pb-10">
@@ -52,7 +52,7 @@ export default function Footer() {
             <a href="#" className="inline-flex items-center gap-2.5 mb-5">
               <div className="bg-nav rounded-lg px-3 py-2 flex items-center gap-2">
                 <img src="/Logo.svg" alt="" aria-hidden="true" className="h-6 w-auto" />
-                <span className="font-heading font-bold text-lg text-[#0D0D0D] tracking-tight leading-none">
+                <span className="font-heading font-bold text-lg text-[#13212B] tracking-tight leading-none">
                   NeuroDetect
                 </span>
               </div>
@@ -102,7 +102,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-[rgba(232,242,246,0.06)] mb-8" />
+        <div className="border-t border-[rgba(19,33,43,0.08)] mb-8" />
 
         {/* Bottom bar */}
         <motion.div
@@ -130,7 +130,7 @@ export default function Footer() {
             className="shrink-0 flex items-center gap-3 opacity-40 hover:opacity-70 transition-opacity duration-200"
             aria-label="Imperial College London"
           >
-            <div className="h-px w-10 bg-[rgba(232,242,246,0.2)]" />
+            <div className="h-px w-10 bg-[rgba(19,33,43,0.15)]" />
             <img src="/imperial.svg" alt="Imperial College London" className="h-6 w-auto" />
           </a>
         </motion.div>

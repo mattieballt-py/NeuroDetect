@@ -21,13 +21,13 @@ const stackRest = [
 function ScanCard({ scan }) {
   return (
     <div style={{
-      width: 210, background: '#070c10',
+      width: 210, background: '#FFFFFF',
       borderRadius: 12, overflow: 'hidden',
-      border: '1px solid rgba(232,242,246,0.08)',
-      boxShadow: '0 16px 48px rgba(0,0,0,0.75)',
+      border: '1px solid rgba(19,33,43,0.08)',
+      boxShadow: '0 16px 48px rgba(19,33,43,0.08)',
     }}>
       <div style={{ height: 3, background: scan.accent }} />
-      <div style={{ height: 192, background: '#05080b', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ height: 192, background: '#F4F7FA', position: 'relative', overflow: 'hidden' }}>
         <img
           src={scan.image}
           alt={`${scan.label} MRI scan`}
@@ -35,15 +35,15 @@ function ScanCard({ scan }) {
         />
         <span style={{
           position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace',
-          color: 'rgba(232,242,246,0.65)', background: 'rgba(0,0,0,0.55)',
-          padding: '2px 6px', borderRadius: 4,
+          color: 'rgba(19,33,43,0.72)', background: 'rgba(255,255,255,0.88)',
+          padding: '2px 6px', borderRadius: 4, border: '1px solid rgba(19,33,43,0.08)',
         }}>
           T1w · axial
         </span>
       </div>
-      <div style={{ padding: '9px 13px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#070c10' }}>
+      <div style={{ padding: '9px 13px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FFFFFF' }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: scan.accent }}>{scan.label}</span>
-        <span style={{ fontSize: 9, color: 'rgba(143,163,172,0.45)' }}>224 × 224 px</span>
+        <span style={{ fontSize: 9, color: 'rgba(95,115,128,0.55)' }}>224 × 224 px</span>
       </div>
     </div>
   )
@@ -52,50 +52,50 @@ function ScanCard({ scan }) {
 function CNNPanel() {
   return (
     <div style={{
-      width: 210, background: '#070c10',
+      width: 210, background: '#FFFFFF',
       borderRadius: 12, overflow: 'hidden',
-      border: '1px solid rgba(232,242,246,0.08)',
-      boxShadow: '0 16px 48px rgba(0,0,0,0.75)',
+      border: '1px solid rgba(19,33,43,0.08)',
+      boxShadow: '0 16px 48px rgba(19,33,43,0.08)',
     }}>
-      <div style={{ height: 3, background: 'linear-gradient(to right, rgba(232,242,246,0.15), rgba(232,242,246,0.45))' }} />
+      <div style={{ height: 3, background: 'linear-gradient(to right, rgba(19,33,43,0.12), rgba(231,30,34,0.35))' }} />
       <div style={{ padding: '14px 10px 8px', height: 216, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <svg width="205" height="188" viewBox="0 0 205 188">
           {/* Input block */}
-          <rect x="2" y="24" width="24" height="120" rx="3" fill="rgba(41,55,63,0.85)" stroke="rgba(232,242,246,0.14)" strokeWidth="1"/>
-          {[38,53,68,83,98,113,128].map(y => <line key={y} x1="2" y1={y} x2="26" y2={y} stroke="rgba(232,242,246,0.06)" strokeWidth="0.5"/>)}
-          {[9,16,22].map(x => <line key={x} x1={x} y1="24" x2={x} y2="144" stroke="rgba(232,242,246,0.06)" strokeWidth="0.5"/>)}
+          <rect x="2" y="24" width="24" height="120" rx="3" fill="rgba(237,243,247,0.95)" stroke="rgba(19,33,43,0.12)" strokeWidth="1"/>
+          {[38,53,68,83,98,113,128].map(y => <line key={y} x1="2" y1={y} x2="26" y2={y} stroke="rgba(19,33,43,0.06)" strokeWidth="0.5"/>) }
+          {[9,16,22].map(x => <line key={x} x1={x} y1="24" x2={x} y2="144" stroke="rgba(19,33,43,0.06)" strokeWidth="0.5"/>) }
 
           {/* Arrow */}
-          <path d="M28 84 L36 84" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
-          <path d="M33 80 L37 84 L33 88" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M28 84 L36 84" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M33 80 L37 84 L33 88" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
 
           {/* Conv1 — stacked feature maps */}
           {[0,3,6,9].map((o, i) => (
             <rect key={i} x={40+o} y={30+o} width="20" height={104-o} rx="2"
-              fill={`rgba(60,85,105,${0.75-i*0.12})`} stroke="rgba(232,242,246,0.11)" strokeWidth="0.8"/>
+              fill={`rgba(145,170,186,${0.78-i*0.12})`} stroke="rgba(19,33,43,0.1)" strokeWidth="0.8"/>
           ))}
 
           {/* Arrow */}
-          <path d="M72 84 L80 84" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
-          <path d="M77 80 L81 84 L77 88" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M72 84 L80 84" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M77 80 L81 84 L77 88" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
 
           {/* Conv2 — more, narrower */}
           {[0,3,6,9,12,15].map((o, i) => (
             <rect key={i} x={83+o} y={36+o} width="14" height={84-o*0.8} rx="2"
-              fill={`rgba(50,70,90,${0.65-i*0.07})`} stroke="rgba(232,242,246,0.09)" strokeWidth="0.8"/>
+              fill={`rgba(167,185,197,${0.68-i*0.07})`} stroke="rgba(19,33,43,0.09)" strokeWidth="0.8"/>
           ))}
 
           {/* Arrow */}
-          <path d="M112 84 L120 84" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
-          <path d="M117 80 L121 84 L117 88" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M112 84 L120 84" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M117 80 L121 84 L117 88" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
 
           {/* FC layers */}
-          <rect x="123" y="50" width="11" height="68" rx="2" fill="rgba(41,55,63,0.75)" stroke="rgba(232,242,246,0.12)" strokeWidth="1"/>
-          <rect x="138" y="60" width="9" height="48" rx="2" fill="rgba(41,55,63,0.6)" stroke="rgba(232,242,246,0.1)" strokeWidth="1"/>
+          <rect x="123" y="50" width="11" height="68" rx="2" fill="rgba(237,243,247,0.95)" stroke="rgba(19,33,43,0.1)" strokeWidth="1"/>
+          <rect x="138" y="60" width="9" height="48" rx="2" fill="rgba(237,243,247,0.82)" stroke="rgba(19,33,43,0.09)" strokeWidth="1"/>
 
           {/* Arrow */}
-          <path d="M149 84 L155 84" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
-          <path d="M152 80 L156 84 L152 88" stroke="rgba(232,242,246,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M149 84 L155 84" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M152 80 L156 84 L152 88" stroke="rgba(19,33,43,0.18)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
 
           {/* Output nodes */}
           {[
@@ -106,7 +106,7 @@ function CNNPanel() {
           ].map(({ cy, color, label }) => (
             <g key={label}>
               <circle cx="161" cy={cy} r="5.5" fill={color} opacity="0.82"/>
-              <text x="170" y={cy+3.5} fontSize="8.5" fill="rgba(232,242,246,0.48)" fontFamily="ui-monospace,monospace">{label}</text>
+              <text x="170" y={cy+3.5} fontSize="8.5" fill="rgba(95,115,128,0.6)" fontFamily="ui-monospace,monospace">{label}</text>
             </g>
           ))}
 
@@ -114,7 +114,7 @@ function CNNPanel() {
           {[
             [14, 'Input'], [52, 'Conv1'], [95, 'Conv2'], [129, 'FC'], [161, 'Out'],
           ].map(([x, lbl]) => (
-            <text key={lbl} x={x} y="174" fontSize="7" fill="rgba(232,242,246,0.22)" textAnchor="middle">{lbl}</text>
+            <text key={lbl} x={x} y="174" fontSize="7" fill="rgba(95,115,128,0.38)" textAnchor="middle">{lbl}</text>
           ))}
         </svg>
       </div>
@@ -126,23 +126,23 @@ function CNNPanel() {
 function GradCAMPanel() {
   return (
     <div style={{
-      width: 210, background: '#070c10',
+      width: 210, background: '#FFFFFF',
       borderRadius: 12, overflow: 'hidden',
-      border: '1px solid rgba(232,242,246,0.08)',
-      boxShadow: '0 16px 48px rgba(0,0,0,0.75)',
+      border: '1px solid rgba(19,33,43,0.08)',
+      boxShadow: '0 16px 48px rgba(19,33,43,0.08)',
     }}>
       <div style={{ height: 3, background: 'linear-gradient(to right, #E71E22, rgba(255,160,50,0.8))' }} />
 
       {/* Brain + heatmap */}
-      <div style={{ height: 175, background: '#04070a', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ height: 175, background: '#F4F7FA', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           width: 130, height: 148,
           borderRadius: '50% 50% 46% 46% / 55% 55% 45% 45%',
-          background: 'radial-gradient(ellipse 72% 68% at 48% 44%, #333 0%, #1c1c1c 55%, #0e0e0e 82%)',
+          background: 'radial-gradient(ellipse 72% 68% at 48% 44%, #F0F4F7 0%, #DDE5EB 55%, #C9D5DE 82%)',
           position: 'relative', overflow: 'hidden',
         }}>
           <div style={{ position: 'absolute', inset: '18% 10%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', opacity: 0.09 }}>
-            {[0,1,2,3,4,5].map(i => <div key={i} style={{ height: 1, background: '#E8F2F6' }} />)}
+            {[0,1,2,3,4,5].map(i => <div key={i} style={{ height: 1, background: '#13212B' }} />)}
           </div>
           <div style={{
             position: 'absolute', inset: 0,
@@ -150,7 +150,7 @@ function GradCAMPanel() {
           }} />
         </div>
         <div style={{ position: 'absolute', bottom: 8, right: 10, display: 'flex', alignItems: 'center', gap: 4 }}>
-          <span style={{ fontSize: 7, color: 'rgba(232,242,246,0.3)', fontFamily: 'monospace' }}>low</span>
+          <span style={{ fontSize: 7, color: 'rgba(95,115,128,0.45)', fontFamily: 'monospace' }}>low</span>
           <svg width="52" height="8" viewBox="0 0 52 8" style={{ display: 'block' }}>
             <defs>
               <linearGradient id="gcam-mini-panel" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -164,22 +164,22 @@ function GradCAMPanel() {
             </defs>
             <rect x="0" y="0" width="52" height="8" rx="1.5" fill="url(#gcam-mini-panel)" opacity="0.85" />
           </svg>
-          <span style={{ fontSize: 7, color: 'rgba(232,242,246,0.3)', fontFamily: 'monospace' }}>high</span>
+          <span style={{ fontSize: 7, color: 'rgba(95,115,128,0.45)', fontFamily: 'monospace' }}>high</span>
         </div>
-        <span style={{ position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace', color: 'rgba(232,242,246,0.28)' }}>Grad-CAM</span>
+        <span style={{ position: 'absolute', top: 8, left: 10, fontSize: 9, fontFamily: 'monospace', color: 'rgba(95,115,128,0.55)' }}>Grad-CAM</span>
       </div>
 
       {/* Result */}
       <div style={{ padding: '10px 13px 13px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(143,163,172,0.7)' }}>Result</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(95,115,128,0.7)' }}>Result</span>
           <span style={{ fontSize: 10, fontWeight: 700, color: '#E71E22', background: 'rgba(231,30,34,0.12)', padding: '2px 8px', borderRadius: 999 }}>Glioma</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
-          <span style={{ fontSize: 11, color: 'rgba(143,163,172,0.7)' }}>Confidence</span>
-          <span style={{ fontSize: 11, fontWeight: 600, color: '#E8F2F6' }}>92%</span>
+          <span style={{ fontSize: 11, color: 'rgba(95,115,128,0.7)' }}>Confidence</span>
+          <span style={{ fontSize: 11, fontWeight: 600, color: '#13212B' }}>92%</span>
         </div>
-        <div style={{ height: 5, borderRadius: 999, background: 'rgba(41,55,63,0.7)', overflow: 'hidden' }}>
+        <div style={{ height: 5, borderRadius: 999, background: 'rgba(19,33,43,0.08)', overflow: 'hidden' }}>
           <div style={{ width: '92%', height: '100%', borderRadius: 999, background: 'linear-gradient(to right, #E71E22, #ff6b6b)' }} />
         </div>
       </div>
@@ -192,8 +192,8 @@ function ArrowConnector() {
   return (
     <div className="shrink-0 flex items-center px-2">
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <circle cx="18" cy="18" r="17" stroke="rgba(232,242,246,0.15)" strokeWidth="1"/>
-        <path d="M11 18h14M20 12l6 6-6 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="18" cy="18" r="17" stroke="rgba(19,33,43,0.12)" strokeWidth="1"/>
+        <path d="M11 18h14M20 12l6 6-6 6" stroke="#13212B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </div>
   )
@@ -203,8 +203,8 @@ function ArrowConnector() {
 function ArrowDown() {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <circle cx="18" cy="18" r="17" stroke="rgba(232,242,246,0.15)" strokeWidth="1"/>
-      <path d="M18 11v14M12 20l6 6 6-6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="18" cy="18" r="17" stroke="rgba(19,33,43,0.12)" strokeWidth="1"/>
+      <path d="M18 11v14M12 20l6 6 6-6" stroke="#13212B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -247,9 +247,9 @@ export default function Methodology() {
     <section
       id="methodology"
       className="relative"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #111820 50%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F7F9FB 0%, #EDF3F7 50%, #F7F9FB 100%)' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       {/* ── DESKTOP: sticky scroll layout ─────────────────────────────────── */}
       <div ref={containerRef} style={{ height: '320vh' }} className="hidden lg:block">
@@ -257,7 +257,7 @@ export default function Methodology() {
 
           {/* Header — always visible, not scroll-driven */}
           <div className="text-center pt-20 pb-6 shrink-0 px-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted mb-5">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted mb-5 shadow-sm">
               The Model
             </span>
             <h2 className="text-3xl font-black text-theme tracking-tight leading-tight mb-3 mt-5">
@@ -328,7 +328,7 @@ export default function Methodology() {
       {/* ── MOBILE: simple stacked layout ──────────────────────────────────── */}
       <div className="lg:hidden py-24 px-6">
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted mb-5">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted mb-5 shadow-sm">
             The Model
           </span>
           <h2 className="text-3xl font-black text-theme tracking-tight leading-tight mb-3 mt-5">

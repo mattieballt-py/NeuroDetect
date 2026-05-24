@@ -61,13 +61,13 @@ export default function Stakes() {
       id="stakes"
       className="relative bg-bg py-28 px-6 overflow-hidden"
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 50% 100%, rgba(41,55,63,0.35) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 100%, rgba(19,33,43,0.05) 0%, transparent 70%)',
         }}
       />
 
@@ -81,7 +81,7 @@ export default function Stakes() {
           viewport={{ once: true, margin: '-80px' }}
           className="flex justify-center mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
             The problem
           </span>
         </motion.div>
@@ -141,7 +141,7 @@ export default function Stakes() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
-            className="rounded-2xl border border-[rgba(231,30,34,0.2)] bg-[rgba(231,30,34,0.05)] px-8 py-7"
+            className="rounded-2xl border border-[rgba(231,30,34,0.14)] bg-[rgba(231,30,34,0.04)] px-8 py-7 shadow-sm"
           >
             <p className="text-xl md:text-2xl font-semibold text-theme leading-relaxed mb-3">
               Current AI models are{' '}

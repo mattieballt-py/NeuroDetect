@@ -12,8 +12,8 @@
   }
 
   body {
-    background-color: #0D0D0D;
-    color: #E8F2F6;
+    background-color: #F7F9FB;
+    color: #13212B;
     font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,16 +29,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0D0D0D;
+    background: #EEF3F7;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #29373F;
+    background: #C6D2DB;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #E8F2F6;
+    background: #91A4B1;
   }
 }
 
@@ -50,8 +50,8 @@
     box-shadow: 0 0 48px rgba(231, 30, 34, 0.6);
   }
   .glass-card {
-    background: rgba(41, 55, 63, 0.3);
-    border: 1px solid rgba(232, 242, 246, 0.08);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(19, 33, 43, 0.08);
     backdrop-filter: blur(12px);
   }
   .gradient-border {
@@ -63,7 +63,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(232,242,246,0.15), rgba(232,242,246,0.03));
+    background: linear-gradient(135deg, rgba(19,33,43,0.12), rgba(19,33,43,0.03));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;

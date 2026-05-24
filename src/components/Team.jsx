@@ -62,14 +62,14 @@ export default function Team() {
     <section
       id="team"
       className="relative py-28 px-6 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #0f1c22 60%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F7F9FB 0%, #EEF4F8 60%, #F7F9FB 100%)' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(41,55,63,0.2) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(19,33,43,0.05) 0%, transparent 70%)',
         }}
       />
 
@@ -78,7 +78,7 @@ export default function Team() {
         {/* Text content — centred, constrained to max-w-2xl */}
         <div className="max-w-2xl mx-auto text-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex justify-center mb-5">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
               The Team
             </span>
           </motion.div>
@@ -123,7 +123,7 @@ export default function Team() {
               variants={photoItem}
               className="w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] flex flex-col items-center gap-3"
             >
-              <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(232,242,246,0.08)]">
+              <div className="w-full aspect-square rounded-2xl overflow-hidden border border-[rgba(19,33,43,0.08)] bg-white shadow-sm">
                 {member.photo ? (
                   <img
                     src={member.photo}

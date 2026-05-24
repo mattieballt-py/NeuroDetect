@@ -37,10 +37,10 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        backgroundColor: pastHero ? 'rgba(232,242,246,0.97)' : 'transparent',
+        backgroundColor: pastHero ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.65)',
         backdropFilter: pastHero ? 'blur(12px)' : 'none',
         boxShadow: pastHero
-          ? '0 1px 0 rgba(0,0,0,0.1), 0 4px 24px rgba(0,0,0,0.08)'
+          ? '0 1px 0 rgba(19,33,43,0.08), 0 4px 24px rgba(19,33,43,0.06)'
           : 'none',
         transition: 'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease',
       }}
@@ -52,8 +52,8 @@ export default function Navbar() {
           <a href="#" className="flex items-center gap-2.5 shrink-0">
             <AnimatePresence mode="wait" initial={false}>
               <motion.img
-                key={pastHero ? 'logo-dark' : 'logo-light'}
-                src={pastHero ? '/Logo.svg' : '/logowhitebg.svg'}
+                key="logo"
+                src="/Logo.svg"
                 alt=""
                 aria-hidden="true"
                 className="h-8 w-auto"
@@ -65,7 +65,7 @@ export default function Navbar() {
             </AnimatePresence>
             <span
               className="font-heading font-bold text-xl tracking-tight leading-none transition-colors duration-300"
-              style={{ color: pastHero ? '#0D0D0D' : '#E8F2F6' }}
+              style={{ color: '#13212B' }}
             >
               NeuroDetect
             </span>
@@ -79,15 +79,15 @@ export default function Navbar() {
                 href={link.href}
                 className="font-sans px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300"
                 style={{
-                  color: pastHero ? '#1a2a30' : '#E8F2F6',
+                  color: '#13212B',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = pastHero ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.12)'
-                  e.currentTarget.style.color = pastHero ? '#0D0D0D' : '#ffffff'
+                  e.currentTarget.style.backgroundColor = 'rgba(19,33,43,0.06)'
+                  e.currentTarget.style.color = '#13212B'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'transparent'
-                  e.currentTarget.style.color = pastHero ? '#1a2a30' : '#E8F2F6'
+                  e.currentTarget.style.color = '#13212B'
                 }}
               >
                 {link.label}
@@ -104,10 +104,10 @@ export default function Navbar() {
               className="font-sans px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300"
               style={{
                 backgroundColor: pastHero ? '#E71E22' : '#ffffff',
-                color: pastHero ? '#ffffff' : '#0D0D0D',
+                color: pastHero ? '#ffffff' : '#13212B',
                 boxShadow: pastHero
                   ? '0 0 0 0 rgba(231,30,34,0)'
-                  : '0 2px 8px rgba(0,0,0,0.15)',
+                  : '0 2px 8px rgba(19,33,43,0.12)',
               }}
             >
               Request Beta →
@@ -117,11 +117,11 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             className="md:hidden p-2 rounded-lg transition-colors duration-300"
-            style={{ color: pastHero ? '#1a2a30' : '#E8F2F6' }}
+              style={{ color: '#13212B' }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = pastHero ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.12)'
+              e.currentTarget.style.backgroundColor = 'rgba(19,33,43,0.06)'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent'
@@ -142,9 +142,9 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden border-t"
             style={{
-              borderColor: pastHero ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.1)',
-              backgroundColor: pastHero ? '#E8F2F6' : 'rgba(13,13,13,0.85)',
-              backdropFilter: pastHero ? 'none' : 'blur(16px)',
+              borderColor: 'rgba(19,33,43,0.08)',
+              backgroundColor: 'rgba(255,255,255,0.95)',
+              backdropFilter: 'blur(16px)',
             }}
           >
             <div className="px-6 py-4 flex flex-col gap-2">
@@ -154,7 +154,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="font-sans px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200"
-                  style={{ color: pastHero ? '#1a2a30' : '#E8F2F6' }}
+                  style={{ color: '#13212B' }}
                 >
                   {link.label}
                 </a>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 className="font-sans mt-2 px-5 py-3 text-sm font-semibold rounded-full text-center transition-colors duration-300"
                 style={{
                   backgroundColor: pastHero ? '#E71E22' : '#ffffff',
-                  color: pastHero ? '#ffffff' : '#0D0D0D',
+                  color: pastHero ? '#ffffff' : '#13212B',
                 }}
               >
                 Request Beta →

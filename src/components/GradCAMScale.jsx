@@ -1,5 +1,5 @@
 // Jet colormap scale matching standard Grad-CAM output: blue -> cyan -> green -> yellow -> orange -> red
-// Transparent background -- safe on any dark surface
+// Transparent background -- safe on any surface
 
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ export default function GradCAMScale({ className = '' }) {
         {/* Gradient bar */}
         <rect x="0" y="0" width="260" height="11" rx="2.5" fill={`url(#${gid})`} opacity="0.88" />
         {/* Subtle border */}
-        <rect x="0" y="0" width="260" height="11" rx="2.5" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" />
+        <rect x="0" y="0" width="260" height="11" rx="2.5" fill="none" stroke="rgba(19,33,43,0.08)" strokeWidth="0.6" />
 
         {/* Tick marks at 0.2, 0.4, 0.6, 0.8 */}
         {[0.2, 0.4, 0.6, 0.8].map(v => (
@@ -33,19 +33,19 @@ export default function GradCAMScale({ className = '' }) {
             key={v}
             x1={v * 260} y1="12"
             x2={v * 260} y2="16"
-            stroke="rgba(232,242,246,0.22)"
+            stroke="rgba(19,33,43,0.18)"
             strokeWidth="0.8"
           />
         ))}
 
         {/* Labels */}
-        <text x="0"   y="26" fontSize="7" fill="rgba(143,163,172,0.45)" textAnchor="start" fontFamily="ui-monospace,monospace">Low</text>
+        <text x="0"   y="26" fontSize="7" fill="rgba(95,115,128,0.55)" textAnchor="start" fontFamily="ui-monospace,monospace">Low</text>
         {[0.2, 0.4, 0.6, 0.8].map(v => (
-          <text key={v} x={v * 260} y="26" fontSize="7" fill="rgba(143,163,172,0.32)" textAnchor="middle" fontFamily="ui-monospace,monospace">{v}</text>
+          <text key={v} x={v * 260} y="26" fontSize="7" fill="rgba(95,115,128,0.38)" textAnchor="middle" fontFamily="ui-monospace,monospace">{v}</text>
         ))}
-        <text x="260" y="26" fontSize="7" fill="rgba(143,163,172,0.45)" textAnchor="end" fontFamily="ui-monospace,monospace">High</text>
+        <text x="260" y="26" fontSize="7" fill="rgba(95,115,128,0.55)" textAnchor="end" fontFamily="ui-monospace,monospace">High</text>
       </svg>
-      <p style={{ fontSize: 8, color: 'rgba(143,163,172,0.28)', textAlign: 'center', marginTop: 1, fontFamily: 'ui-monospace,monospace' }}>
+      <p style={{ fontSize: 8, color: 'rgba(95,115,128,0.35)', textAlign: 'center', marginTop: 1, fontFamily: 'ui-monospace,monospace' }}>
         Grad-CAM activation
       </p>
     </div>

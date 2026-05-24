@@ -77,7 +77,7 @@ export default function Demo() {
 
   return (
     <section id="demo" className="relative bg-bg py-28 px-6">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,242,246,0.1)] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(19,33,43,0.08)] to-transparent" />
 
       <div className="max-w-content mx-auto">
 
@@ -89,7 +89,7 @@ export default function Demo() {
             transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex justify-center mb-5"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(232,242,246,0.12)] bg-surface/30 text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(19,33,43,0.1)] bg-white text-xs font-semibold uppercase tracking-widest text-text-muted shadow-sm">
               Live Demo
             </span>
           </motion.div>
@@ -136,7 +136,7 @@ export default function Demo() {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         onClick={() => selectCase(i)}
-                        className="sm:flex-1 rounded-xl border border-[rgba(232,242,246,0.08)] bg-surface/10 overflow-hidden hover:border-[rgba(232,242,246,0.24)] hover:bg-surface/20 transition-all duration-200 group text-left"
+                        className="sm:flex-1 rounded-xl border border-[rgba(19,33,43,0.08)] bg-white overflow-hidden hover:border-[rgba(19,33,43,0.16)] hover:bg-bg transition-all duration-200 group text-left shadow-sm"
                       >
                         <div className="relative overflow-hidden">
                           <img
@@ -144,7 +144,7 @@ export default function Demo() {
                             alt={cas.label}
                             className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
                         </div>
                         <div className="px-3 py-2.5 flex items-center justify-between">
                           <span className="text-xs font-semibold text-theme">{cas.label}</span>
@@ -169,13 +169,13 @@ export default function Demo() {
                     <img
                       src={CASES[selectedIdx].plain}
                       alt="Selected scan"
-                      className="w-20 h-20 rounded-xl object-cover border border-[rgba(232,242,246,0.1)] opacity-60"
+                      className="w-20 h-20 rounded-xl object-cover border border-[rgba(19,33,43,0.08)] opacity-60"
                     />
                   )}
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.9, repeat: Infinity, ease: 'linear' }}
-                    className="w-7 h-7 border-2 border-[rgba(232,242,246,0.1)] border-t-cta rounded-full"
+                    className="w-7 h-7 border-2 border-[rgba(19,33,43,0.1)] border-t-cta rounded-full"
                   />
                   <p className="text-sm text-text-muted text-center max-w-[260px] leading-relaxed">
                     Retrieving Grad-CAM analysis and cancer detection…
@@ -257,7 +257,7 @@ export default function Demo() {
                     </div>
 
                     {/* Masked confidence */}
-                    <div className="rounded-xl border border-[rgba(232,242,246,0.06)] bg-surface/20 px-4 py-3 space-y-2">
+                    <div className="rounded-xl border border-[rgba(19,33,43,0.08)] bg-white px-4 py-3 space-y-2 shadow-sm">
                       <div className="flex items-center justify-between text-xs text-text-muted">
                         <span>After masking active region</span>
                         <span className="text-cta font-semibold">{activeCase.maskedConfidence}%</span>
@@ -295,7 +295,7 @@ export default function Demo() {
             href="#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(232,242,246,0.15)] rounded-full text-sm font-medium text-theme hover:border-[rgba(232,242,246,0.3)] hover:bg-surface/20 transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(19,33,43,0.12)] rounded-full text-sm font-medium text-theme hover:border-[rgba(19,33,43,0.22)] hover:bg-white transition-all duration-200 shadow-sm"
           >
             Request Beta Access →
           </motion.a>
