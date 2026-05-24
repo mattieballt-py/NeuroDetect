@@ -14,7 +14,6 @@ const links = {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'The Solution', href: '#solution' },
     { label: 'Clinical Impact', href: '#impact' },
-    { label: 'The Team', href: '#team' },
   ],
   'Beta & Research': [
     { label: 'Request Beta Access', href: '#contact' },
@@ -115,7 +114,7 @@ export default function Footer() {
           {/* Left: copyright + disclaimer */}
           <div className="flex flex-col gap-1.5">
             <p className="text-xs text-text-muted opacity-50">
-              © {new Date().getFullYear()} NeuroDetect, Imperial College London. Machine Learning Course. Please give us an A+ 
+              © {new Date().getFullYear()} NeuroDetect, Imperial College London.
             </p>
             <p className="text-xs text-text-muted opacity-35 max-w-sm leading-relaxed">
               Not a certified medical device. All outputs must be reviewed by a qualified clinician before acting on them.

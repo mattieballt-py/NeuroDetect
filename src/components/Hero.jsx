@@ -42,7 +42,7 @@ export default function Hero() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'radial-gradient(ellipse 120% 60% at -10% 50%, rgba(19,33,43,0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse 150% 72% at -12% 50%, rgba(19,33,43,0.06) 0%, rgba(19,33,43,0.03) 42%, transparent 78%)',
             }}
           />
 
@@ -116,8 +116,8 @@ export default function Hero() {
         <div className="relative flex-1 min-h-0">
 
           <div
-            className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #F7F9FB, transparent)' }}
+            className="absolute left-0 top-0 bottom-0 w-28 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, #F7F9FB 0%, rgba(247,249,251,0.95) 18%, rgba(247,249,251,0.4) 68%, transparent 100%)' }}
           />
 
           {/* Image 1 — Grad-CAM detection (shown first) */}
