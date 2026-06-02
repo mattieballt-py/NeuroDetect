@@ -13,15 +13,15 @@ const fadeUp = {
 const faqs = [
   {
     q: 'Is NeuroDetect a replacement for radiologists?',
-    a: 'No. NeuroDetect is designed as a decision-support tool, not a replacement. It helps radiologists triage and prioritise high-risk scans faster, but every diagnosis remains the responsibility of a qualified clinician. The AI flags; the expert decides.',
+    a: 'No. NeuroDetect is designed as a decision-support tool, not a replacement. It helps radiologists triage and prioritise high-risk scans faster, but every diagnosis remains the responsibility of a qualified clinician. The neural network flags; the expert decides.',
   },
   {
     q: 'What scan formats does NeuroDetect accept?',
     a: 'NeuroDetect currently supports DICOM (the standard clinical format) and JPEG/PNG exports of brain MRI scans. DICOM support preserves all associated metadata for more accurate analysis.',
   },
   {
-    q: 'How does the AI explain its decisions?',
-    a: 'We use Grad-CAM (Gradient-weighted Class Activation Mapping) to generate a heatmap overlay showing which regions of the scan most influenced the AI\'s output. We then run occlusion testing — hiding those regions and re-running the analysis — to verify they are genuinely meaningful, not artefacts.',
+    q: 'How does the neural network explain its decisions?',
+    a: 'We use Grad-CAM (Gradient-weighted Class Activation Mapping) to generate a heatmap overlay showing which regions of the scan most influenced the neural network\'s output. We then run occlusion testing — hiding those regions and re-running the analysis — to verify they are genuinely meaningful, not artefacts.',
   },
   {
     q: 'How accurate is NeuroDetect?',
@@ -29,11 +29,11 @@ const faqs = [
   },
   {
     q: 'Is patient data kept secure and confidential?',
-    a: 'Yes. Scans are encrypted in transit using TLS and are not retained beyond the active analysis session. No patient-identifiable data is stored on our servers. NeuroDetect is designed with NHS and GDPR data handling principles in mind.',
+    a: 'Yes. Scans are encrypted in transit using TLS and are not retained beyond the active analysis session. No patient-identifiable data is stored on our servers, and the training set was built from anonymised hospital MRI data. The model was trained locally on four MacBooks rather than in a cloud data centre, avoiding extra water use from large-scale training infrastructure. NeuroDetect is designed with NHS and GDPR data handling principles in mind.',
   },
   {
     q: 'What types of brain tumour can NeuroDetect detect?',
-    a: 'The current model is trained to classify glioma, meningioma, pituitary tumours, and normal (no tumour) cases from T1-weighted MRI scans. Expanding to additional modalities and tumour types is part of our ongoing research.',
+    a: 'The current neural network is trained to classify glioma, meningioma, pituitary tumours, and normal (no tumour) cases from T1-weighted MRI scans. Expanding to additional modalities and tumour types is part of our ongoing research.',
   },
   {
     q: 'When will NeuroDetect be available to clinical partners?',

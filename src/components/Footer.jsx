@@ -58,7 +58,7 @@ export default function Footer() {
             </a>
 
             <p className="text-sm text-text-muted leading-relaxed max-w-[260px] mb-6">
-              Explainable AI for brain tumour detection. Built by engineers, designed for clinicians.
+              Explainable neural network for brain tumour detection, trained locally on four MacBooks with anonymised hospital MRI data and no additional water use for training. Built by engineers, designed for clinicians.
             </p>
 
             

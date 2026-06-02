@@ -63,12 +63,12 @@ const IconCheck = () => (
 const before = [
   'Radiologists review every scan manually',
   'High-risk patients wait in the same queue as routine cases',
-  '"Black box" AI offers no explanations',
-  'Doctors hesitant to trust AI decisions',
+  '"Black box" neural networks offer no explanations',
+  'Doctors hesitant to trust neural network decisions',
 ]
 
 const after = [
-  'AI pre-screens scans and flags high-risk cases instantly',
+  'The neural network pre-screens scans and flags high-risk cases instantly',
   'Urgent cases automatically prioritised in the workflow',
   'Visual explanations build genuine clinical confidence',
   'Radiologists focus their expertise where it matters most',

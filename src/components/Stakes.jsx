@@ -144,13 +144,13 @@ export default function Stakes() {
             className="rounded-2xl border border-[rgba(231,30,34,0.14)] bg-[rgba(231,30,34,0.04)] px-8 py-7 shadow-sm"
           >
             <p className="text-xl md:text-2xl font-semibold text-theme leading-relaxed mb-3">
-              Current AI models are{' '}
+                Current neural networks are{' '}
               <span className="text-cta font-black italic">"black boxes"</span>
             </p>
             <p className="text-text-muted text-base leading-relaxed">
               They give answers without showing their work. In healthcare,
               that's not good enough. Doctors need to see{' '}
-              <span className="text-theme font-medium">WHY</span> the AI made its decision.
+                <span className="text-theme font-medium">WHY</span> the neural network made its decision.
             </p>
           </motion.div>
         </div>

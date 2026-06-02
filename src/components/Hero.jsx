@@ -83,7 +83,7 @@ export default function Hero() {
               custom={0.6}
               className="font-heading text-4xl lg:text-5xl xl:text-[3.5rem] font-black leading-[1.08] text-theme mb-5"
             >
-              What if AI could
+              What if a neural network could
               <br />
               <span className="text-cta italic">save lives?</span>
             </motion.h1>
@@ -93,7 +93,7 @@ export default function Hero() {
               custom={0.72}
               className="hidden md:block font-sans text-text-muted text-base lg:text-lg max-w-sm mb-8 leading-relaxed"
             >
-              NeuroDetect uses explainable AI to flag high-risk brain MRI scans, showing radiologists exactly where to look.
+              NeuroDetect uses an explainable neural network, trained locally on four MacBooks with anonymised hospital MRI data, to flag high-risk scans and show radiologists exactly where to look.
             </motion.p>
 
             <motion.a
@@ -143,7 +143,7 @@ export default function Hero() {
               className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[rgba(19,33,43,0.12)] rounded-full px-3 py-1.5 shadow-sm"
             >
               <span className="w-2 h-2 rounded-full bg-cta animate-pulse" />
-              <span className="text-xs font-semibold text-text-primary font-sans">AI Analysis Active</span>
+              <span className="text-xs font-semibold text-text-primary font-sans">Neural Network Analysis Active</span>
             </motion.div>
           </motion.div>
         </div>

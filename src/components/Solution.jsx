@@ -74,9 +74,9 @@ const steps = [
       </svg>
     ),
     title: 'Analyse',
-    subtitle: 'AI Visual Processing',
+    subtitle: 'Neural Network Visual Processing',
     body: 'The neural network scans every region, generating a heatmap showing exactly which areas influenced its decision.',
-    badge: 'AI ANALYSIS',
+    badge: 'NEURAL NETWORK',
     badgeColor: 'bg-[rgba(231,30,34,0.12)] text-cta',
     visual: (
         <div className="w-full rounded-xl overflow-hidden border border-[rgba(19,33,43,0.08)] bg-white relative shadow-sm">
@@ -186,7 +186,7 @@ export default function Solution() {
             viewport={{ once: true, margin: '-60px' }}
             className="text-text-muted text-lg max-w-xl mx-auto"
           >
-            AI you can trust because it shows its work.
+            A neural network you can trust because it shows its work.
           </motion.p>
         </div>
 
@@ -297,7 +297,7 @@ export default function Solution() {
           className="mt-14 max-w-2xl mx-auto"
         >
           <p className="text-center text-lg font-semibold text-theme mb-6">
-            The difference? Our AI shows its work.
+            The difference? Our neural network shows its work.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
@@ -316,7 +316,7 @@ export default function Solution() {
                     <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ),
-                text: "Verification checks confirm the AI's focus areas matter",
+                text: 'Verification checks confirm the neural network’s focus areas matter',
               },
               {
                 icon: (
@@ -343,7 +343,7 @@ export default function Solution() {
             ))}
           </div>
           <p className="text-center text-sm text-text-muted mt-6 opacity-70">
-            Radiologists stay in control. AI handles the heavy lifting.
+            Radiologists stay in control. The neural network handles the heavy lifting.
           </p>
         </motion.div>
       </div>

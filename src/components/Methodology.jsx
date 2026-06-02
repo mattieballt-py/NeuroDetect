@@ -264,7 +264,7 @@ export default function Methodology() {
               How We Trained <span className="text-cta">NeuroDetect</span>
             </h2>
             <p className="text-text-muted text-base max-w-sm mx-auto">
-              From raw MRI slices, through the neural network, to an explainable visual output.
+              From anonymised hospital MRI slices, through a locally trained neural network on four MacBooks, to an explainable visual output with no additional water used for cloud training.
             </p>
           </div>
 
@@ -335,7 +335,7 @@ export default function Methodology() {
             How We Trained <span className="text-cta">NeuroDetect</span>
           </h2>
           <p className="text-text-muted text-base max-w-sm mx-auto">
-            From raw MRI slices, through the neural network, to an explainable visual output.
+            From anonymised hospital MRI slices, through a locally trained neural network on four MacBooks, to an explainable visual output with no additional water used for cloud training.
           </p>
         </div>
 

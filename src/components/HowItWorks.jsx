@@ -49,9 +49,9 @@ const cards = [
     id: 'gradcam',
     icon: <IconHeatmap />,
     title: 'Heatmap Highlighting',
-    summary: 'See what the AI is looking at',
+    summary: 'See what the model is looking at',
     expanded:
-      'The AI highlights the exact regions of the scan that led to its decision — like a doctor circling areas of concern on an X-ray. Brighter regions indicate stronger influence on the result.',
+      'The neural network highlights the exact regions of the scan that led to its decision, like a doctor circling areas of concern on an X-ray. Brighter regions indicate stronger influence on the result.',
     visual: (
       <div className="mt-5 rounded-xl overflow-hidden border border-[rgba(19,33,43,0.08)] bg-white shadow-sm">
         <img
@@ -61,7 +61,7 @@ const cards = [
         />
         <div className="px-3 py-2 border-t border-[rgba(19,33,43,0.06)] flex items-center gap-2 bg-bg/60">
           <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse shrink-0" />
-          <span className="text-[10px] font-sans text-text-muted opacity-70">Live Grad-CAM visualisation — areas the AI weighted most heavily</span>
+          <span className="text-[10px] font-sans text-text-muted opacity-70">Live Grad-CAM visualisation, areas the neural network weighted most heavily</span>
         </div>
         <div className="px-3 pb-3">
           <GradCAMScale />
@@ -73,7 +73,7 @@ const cards = [
     id: 'occlusion',
     icon: <IconVerify />,
     title: 'Occlusion Verification',
-    summary: "Double-check the AI's reasoning",
+    summary: "Double-check the neural network's reasoning",
     expanded:
       "We mask the top-activated Grad-CAM region and see if the model's confidence drops more than when masking a random region of the same size. If so, we know it was looking at the right place: not just pattern-matching on noise.",
     visual: (
@@ -219,7 +219,7 @@ export default function HowItWorks() {
             viewport={{ once: true, margin: '-60px' }}
             className="text-text-muted text-lg max-w-lg mx-auto"
           >
-            Every diagnosis comes with evidence. Click each layer to learn how.
+            Every diagnosis comes with evidence. Click each layer to learn how the neural network stays transparent and accountable.
           </motion.p>
         </div>
 

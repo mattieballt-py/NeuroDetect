@@ -42,7 +42,7 @@ const IconGear = () => (
 )
 
 const expertise = [
-  { icon: <IconAI />, label: 'Machine Learning & AI' },
+  { icon: <IconAI />, label: 'Machine Learning & Neural Networks' },
   { icon: <IconBrain />, label: 'Medical Imaging' },
   { icon: <IconGear />, label: 'Engineering & Data Science' },
 ]

@@ -13,7 +13,7 @@ const fadeUp = {
 const items = [
   {
     q: 'What is a CNN?',
-    a: 'A Convolutional Neural Network (CNN) is a type of artificial intelligence modelled loosely on how the human visual system works. Rather than analysing an image all at once, it processes it through a series of layers, each responsible for extracting increasingly complex information. Early layers detect simple patterns like edges and contrasts; deeper layers combine these into shapes and textures. At the end, a classifier maps the compressed visual information to one of the output categories. The model learns by seeing thousands of labelled MRI scans and making small adjustments each time it gets a prediction wrong.',
+    a: 'A Convolutional Neural Network (CNN) is a neural network model modelled loosely on how the human visual system works. Rather than analysing an image all at once, it processes it through a series of layers, each responsible for extracting increasingly complex information. Early layers detect simple patterns like edges and contrasts; deeper layers combine these into shapes and textures. At the end, a classifier maps the compressed visual information to one of the output categories. NeuroDetect learns from thousands of anonymised MRI scans and was trained locally on four MacBooks rather than in a cloud data centre.',
   },
   {
     q: 'Image Input',

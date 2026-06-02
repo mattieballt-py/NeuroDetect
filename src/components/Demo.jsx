@@ -107,7 +107,7 @@ export default function Demo() {
             transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1], delay: 0.24 }}
             className="text-text-muted text-lg max-w-lg mx-auto"
           >
-            Select a scan to run through the model and see exactly how the AI reaches its decision.
+            Select a scan to run through the model and see exactly how the neural network reaches its decision.
           </motion.p>
         </div>
 
@@ -178,7 +178,7 @@ export default function Demo() {
                     className="w-7 h-7 border-2 border-[rgba(19,33,43,0.1)] border-t-cta rounded-full"
                   />
                   <p className="text-sm text-text-muted text-center max-w-[260px] leading-relaxed">
-                    Retrieving Grad-CAM analysis and cancer detection…
+                    Retrieving Grad-CAM analysis and neural network output…
                   </p>
                   <div className="w-full max-w-xs">
                     <div className="h-1.5 rounded-full bg-surface/60 overflow-hidden">
@@ -271,7 +271,7 @@ export default function Demo() {
                         />
                       </div>
                       <p className="text-[10px] text-text-muted opacity-50 leading-relaxed">
-                        A {activeCase.confidence - activeCase.maskedConfidence}% confidence drop when this region is hidden tells us the AI was heavily relying on it to classify this as {activeCase.label} — making it the essential area for clinical review.
+                        A {activeCase.confidence - activeCase.maskedConfidence}% confidence drop when this region is hidden tells us the neural network was heavily relying on it to classify this as {activeCase.label} — making it the essential area for clinical review.
                       </p>
                     </div>
                   </div>
