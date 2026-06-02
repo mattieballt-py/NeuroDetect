@@ -116,8 +116,8 @@ export default function Hero() {
         <div className="relative flex-1 min-h-0">
 
           <div
-            className="absolute left-0 top-0 bottom-0 w-28 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #F7F9FB 0%, rgba(247,249,251,0.95) 18%, rgba(247,249,251,0.4) 68%, transparent 100%)' }}
+            className="absolute left-0 top-0 bottom-0 w-40 md:w-52 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, #F7F9FB 0%, rgba(247,249,251,0.98) 10%, rgba(247,249,251,0.92) 22%, rgba(247,249,251,0.72) 40%, rgba(247,249,251,0.42) 58%, rgba(247,249,251,0.16) 76%, rgba(247,249,251,0.04) 90%, transparent 100%)' }}
           />
 
           {/* Image 1 — Grad-CAM detection (shown first) */}
