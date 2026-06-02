@@ -144,7 +144,7 @@ export default function Stakes() {
             className="rounded-2xl border border-[rgba(231,30,34,0.14)] bg-[rgba(231,30,34,0.04)] px-8 py-7 shadow-sm"
           >
             <p className="text-xl md:text-2xl font-semibold text-theme leading-relaxed mb-3">
-                Current neural networks are{' '}
+                Current AI tools are{' '}
               <span className="text-cta font-black italic">"black boxes"</span>
             </p>
             <p className="text-text-muted text-base leading-relaxed">

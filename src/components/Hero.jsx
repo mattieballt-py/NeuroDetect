@@ -116,8 +116,8 @@ export default function Hero() {
         <div className="relative flex-1 min-h-0">
 
           <div
-            className="absolute left-0 top-0 bottom-0 w-40 md:w-52 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #F7F9FB 0%, rgba(247,249,251,0.98) 10%, rgba(247,249,251,0.92) 22%, rgba(247,249,251,0.72) 40%, rgba(247,249,251,0.42) 58%, rgba(247,249,251,0.16) 76%, rgba(247,249,251,0.04) 90%, transparent 100%)' }}
+            className="absolute left-0 top-0 bottom-0 w-56 md:w-72 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, #F7F9FB 0%, rgba(247,249,251,0.995) 8%, rgba(247,249,251,0.985) 16%, rgba(247,249,251,0.96) 26%, rgba(247,249,251,0.9) 38%, rgba(247,249,251,0.78) 52%, rgba(247,249,251,0.58) 66%, rgba(247,249,251,0.34) 78%, rgba(247,249,251,0.14) 90%, rgba(247,249,251,0.04) 96%, transparent 100%)' }}
           />
 
           {/* Image 1 — Grad-CAM detection (shown first) */}
@@ -125,7 +125,7 @@ export default function Hero() {
             <img
               src="/before.jpg"
               alt="Selection of brain MRI scans with Grad-CAM overlay"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover object-right"
             />
           </motion.div>
 
@@ -137,7 +137,7 @@ export default function Hero() {
                 background: 'radial-gradient(ellipse 70% 50% at 60% 50%, rgba(231,30,34,0.06) 0%, transparent 70%)',
               }}
             />
-            <img src="/after.jpg" alt="Brain MRI scans" className="w-full h-full object-contain" />
+            <img src="/after.jpg" alt="Brain MRI scans" className="w-full h-full object-cover object-right" />
             <motion.div
               style={{ opacity: img2Opacity }}
               className="absolute top-20 right-6 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[rgba(19,33,43,0.12)] rounded-full px-3 py-1.5 shadow-sm"
